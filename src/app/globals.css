@@ -20,10 +20,10 @@
   --text-primary:   #1A3634; /* Dark charcoal/teal */
   --text-secondary: #3D6663; /* Muted dark teal */
   --text-muted:     #628B87;
-  --text-disabled:  #94B8B4;
+  --text-disabled:  #63b46f;
 
   --border:         rgba(52, 144, 139, 0.15);
-  --border-accent:  #6FBEB2; /* Muted seafoam */
+  --border-accent:  #60d475; /* Muted seafoam */
   --border-hover:   rgba(52, 144, 139, 0.3);
 
   --success:        #10B981;

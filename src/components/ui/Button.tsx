@@ -3,6 +3,7 @@
 import React, { forwardRef } from 'react';
 import { cn } from '@/lib/utils';
 import { Loader2 } from 'lucide-react';
+import { motion, HTMLMotionProps } from 'framer-motion';
 
 type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';
 type ButtonSize = 'sm' | 'md' | 'lg';
@@ -40,22 +41,20 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     );
 
     return (
-      <button
+      <motion.button
         ref={ref}
-        className={classes}
         disabled={disabled || loading}
-        {...props}
+        className={classes}
+        whileHover={!disabled && !loading ? { scale: 1.02 } : undefined}
+        whileTap={!disabled && !loading ? { scale: 0.98 } : undefined}
+        transition={{ type: "spring", stiffness: 400, damping: 25 }}
+        {...(props as any)}
       >
-        {loading ? (
-          <Loader2 className="animate-spin" size={size === 'sm' ? 16 : 20} />
-        ) : (
-          <>
-            {icon && <span className="shrink-0">{icon}</span>}
-            {children}
-            {iconRight && <span className="shrink-0">{iconRight}</span>}
-          </>
-        )}
-      </button>
+        {loading && <Loader2 size={size === 'sm' ? 16 : 20} className="animate-spin" />}
+        {!loading && icon && <span className="shrink-0">{icon}</span>}
+        {children}
+        {!loading && iconRight && <span className="shrink-0">{iconRight}</span>}
+      </motion.button>
     );
   }
 );
