@@ -19,28 +19,9 @@ const schema = z.object({
 });
 type FormData = z.infer<typeof schema>;
 
+import { Suspense } from 'react';
+
 export default function LoginPage() {
-  const [serverError, setServerError] = useState('');
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const redirectTo = searchParams.get('redirectTo') || '/';
-  const supabase = createClient();
-
-  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormData>({
-    resolver: zodResolver(schema),
-  });
-
-  const onSubmit = async (data: FormData) => {
-    setServerError('');
-    const { error } = await supabase.auth.signInWithPassword(data);
-    if (error) {
-      setServerError(error.message);
-      return;
-    }
-    router.push(redirectTo);
-    router.refresh();
-  };
-
   return (
     <div className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden" style={{ background: 'var(--bg-base)' }}>
       {/* Background glow */}
@@ -64,46 +45,77 @@ export default function LoginPage() {
 
         {/* Card */}
         <div className="glass-card p-8">
-          {serverError && (
-            <div className="mb-5 flex items-center gap-3 px-4 py-3 rounded-xl bg-[rgba(239,68,68,0.1)] border border-[rgba(239,68,68,0.2)] text-red-400 text-sm">
-              <AlertCircle size={16} className="shrink-0" />
-              {serverError}
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
-            <Input
-              label="Email address"
-              type="email"
-              placeholder="you@example.com"
-              autoComplete="email"
-              icon={<Mail size={16} />}
-              error={errors.email?.message}
-              {...register('email')}
-            />
-            <Input
-              label="Password"
-              type="password"
-              placeholder="••••••••"
-              autoComplete="current-password"
-              icon={<Lock size={16} />}
-              error={errors.password?.message}
-              {...register('password')}
-            />
-
-            <Button type="submit" className="w-full" size="lg" loading={isSubmitting}>
-              Sign In
-            </Button>
-          </form>
-
-          <div className="mt-6 text-center text-sm text-[var(--text-muted)]">
-            Don&apos;t have an account?{' '}
-            <Link href="/signup" className="text-[var(--accent-bright)] hover:underline font-medium">
-              Create one free
-            </Link>
-          </div>
+          <Suspense fallback={<div className="text-center text-[var(--text-muted)] py-4">Loading form...</div>}>
+            <LoginContent />
+          </Suspense>
         </div>
       </div>
     </div>
+  );
+}
+
+function LoginContent() {
+  const [serverError, setServerError] = useState('');
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get('redirectTo') || '/';
+  const supabase = createClient();
+
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormData>({
+    resolver: zodResolver(schema),
+  });
+
+  const onSubmit = async (data: FormData) => {
+    setServerError('');
+    const { error } = await supabase.auth.signInWithPassword(data);
+    if (error) {
+      setServerError(error.message);
+      return;
+    }
+    router.push(redirectTo);
+    router.refresh();
+  };
+
+  return (
+    <>
+      {serverError && (
+        <div className="mb-5 flex items-center gap-3 px-4 py-3 rounded-xl bg-[rgba(239,68,68,0.1)] border border-[rgba(239,68,68,0.2)] text-red-400 text-sm">
+          <AlertCircle size={16} className="shrink-0" />
+          {serverError}
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
+        <Input
+          label="Email address"
+          type="email"
+          placeholder="you@example.com"
+          autoComplete="email"
+          icon={<Mail size={16} />}
+          error={errors.email?.message}
+          {...register('email')}
+        />
+        <Input
+          label="Password"
+          type="password"
+          placeholder="••••••••"
+          autoComplete="current-password"
+          icon={<Lock size={16} />}
+          error={errors.password?.message}
+          {...register('password')}
+        />
+
+        <Button type="submit" className="w-full" size="lg" loading={isSubmitting}>
+          Sign In
+        </Button>
+      </form>
+
+      <div className="mt-6 text-center text-sm text-[var(--text-muted)]">
+        Don&apos;t have an account?{' '}
+        <Link href="/signup" className="text-[var(--accent-bright)] hover:underline font-medium">
+          Create one free
+        </Link>
+      </div>
+    </>
   );
 }
