@@ -89,7 +89,7 @@ export default function JobFeedPage() {
           </p>
 
           {/* Inline search */}
-          <div className="flex flex-col sm:flex-row gap-3 max-w-2xl mx-auto">
+          <div className="flex flex-col sm:flex-row gap-3 max-w-2xl mx-auto mb-16">
             <div className="relative flex-1">
               <input
                 type="search"
@@ -124,11 +124,11 @@ export default function JobFeedPage() {
       </section>
 
       {/* Main content */}
-      <section className="py-10">
+      <section className="py-12">
         <div className="container-app">
-          <div className="flex flex-col lg:flex-row gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-[16rem_1fr] gap-8">
             {/* Sidebar filters */}
-            <aside className="lg:w-64 shrink-0">
+            <aside>
               <JobFilters
                 filters={filters}
                 onChange={setFilters}
@@ -137,7 +137,7 @@ export default function JobFeedPage() {
             </aside>
 
             {/* Job cards grid */}
-            <div className="flex-1">
+            <div className="min-w-0">
               <div className="flex items-center justify-between mb-5">
                 <h2 className="font-semibold text-[var(--text-primary)]">
                   {loading ? 'Loading…' : `${jobs.length} open position${jobs.length !== 1 ? 's' : ''}`}

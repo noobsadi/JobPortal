@@ -89,33 +89,36 @@ export function Navbar() {
     >
       <div className="container-app">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center shadow-[0_0_16px_rgba(124,58,237,0.5)] transition-shadow group-hover:shadow-[0_0_24px_rgba(124,58,237,0.7)]">
-              <Zap size={16} className="text-white" fill="white" />
-            </div>
-            <span className="font-display font-bold text-lg text-[var(--text-primary)]">
-              Job<span className="gradient-text">Portal</span>
-            </span>
-          </Link>
+          {/* Left Side (Logo & Nav) */}
+          <div className="flex items-center gap-8">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-2 group">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center shadow-[0_0_16px_rgba(124,58,237,0.5)] transition-shadow group-hover:shadow-[0_0_24px_rgba(124,58,237,0.7)]">
+                <Zap size={16} className="text-white" fill="white" />
+              </div>
+              <span className="font-display font-bold text-lg text-[var(--text-primary)]">
+                Job<span className="gradient-text">Portal</span>
+              </span>
+            </Link>
 
-          {/* Desktop Nav Links */}
-          <nav className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  'px-4 py-2 rounded-lg text-sm font-medium transition-all',
-                  pathname === link.href
-                    ? 'text-[var(--text-primary)] bg-[var(--bg-card-hover)]'
-                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)]'
-                )}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+            {/* Desktop Nav Links */}
+            <nav className="hidden md:flex items-center gap-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    'px-4 py-2 rounded-lg text-sm font-medium transition-all',
+                    pathname === link.href
+                      ? 'text-[var(--text-primary)] bg-[var(--bg-card-hover)]'
+                      : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)]'
+                  )}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
 
           {/* Right side */}
           <div className="flex items-center gap-3">
