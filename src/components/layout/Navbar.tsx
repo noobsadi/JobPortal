@@ -156,42 +156,44 @@ export function Navbar() {
                     <>
                       <div className="fixed inset-0 z-10" onClick={() => setDropdownOpen(false)} />
                       <div
-                        className="absolute right-0 top-full mt-2 w-52 z-20 rounded-xl bg-[var(--bg-card)] border border-[var(--border)] shadow-[0_16px_48px_rgba(0,0,0,0.5)] overflow-hidden"
+                        className="absolute right-0 top-full mt-3 w-56 z-20 rounded-2xl bg-[var(--bg-glass)] backdrop-blur-2xl border border-[var(--border)] shadow-[0_16px_40px_rgba(0,0,0,0.12)] dark:shadow-[0_16px_40px_rgba(0,0,0,0.4)] overflow-hidden"
                         role="menu"
                       >
-                        <div className="px-4 py-3 border-b border-[var(--border)]">
-                          <p className="text-sm font-semibold text-[var(--text-primary)] truncate">
+                        <div className="px-4 py-3.5 border-b border-[var(--border)] bg-[var(--bg-surface)]/50">
+                          <p className="text-sm font-bold text-[var(--text-primary)] truncate">
                             {seekerProfile
                               ? `${seekerProfile.first_name} ${seekerProfile.last_name}`
                               : user.email}
                           </p>
-                          <p className="text-xs text-[var(--text-muted)] capitalize mt-0.5">{dbUser?.role}</p>
+                          <p className="text-xs text-[var(--text-muted)] capitalize mt-0.5 font-medium tracking-wide">
+                            {dbUser?.role}
+                          </p>
                         </div>
-                        <div className="py-1">
+                        <div className="p-2 space-y-1">
                           <Link
                             href={dashboardPath}
                             role="menuitem"
-                            className="flex items-center gap-3 px-4 py-2.5 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] transition-all"
+                            className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] transition-all"
                           >
-                            <LayoutDashboard size={15} /> Dashboard
+                            <LayoutDashboard size={16} className="text-[var(--accent)]" /> Dashboard
                           </Link>
                           {dbUser?.role === 'seeker' && (
                             <Link
                               href="/dashboard/seeker/profile"
                               role="menuitem"
-                              className="flex items-center gap-3 px-4 py-2.5 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] transition-all"
+                              className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] transition-all"
                             >
-                              <UserIcon size={15} /> My Profile
+                              <UserIcon size={16} className="text-blue-500" /> My Profile
                             </Link>
                           )}
                         </div>
-                        <div className="py-1 border-t border-[var(--border)]">
+                        <div className="p-2 border-t border-[var(--border)] bg-[var(--bg-surface)]/30">
                           <button
                             role="menuitem"
                             onClick={handleSignOut}
-                            className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-red-500 hover:bg-red-500/10 transition-all"
+                            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-red-500 hover:bg-red-500/10 transition-all"
                           >
-                            <LogOut size={15} /> Sign Out
+                            <LogOut size={16} /> Sign Out
                           </button>
                         </div>
                       </div>
