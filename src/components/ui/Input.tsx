@@ -21,9 +21,15 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div className="w-full">
+        {label && (
+          <label htmlFor={inputId} className="block text-sm font-medium text-[var(--text-primary)] mb-2">
+            {label}
+            {props.required && <span className="text-red-400 ml-1">*</span>}
+          </label>
+        )}
         <div className="relative group">
           {icon && (
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-muted)] group-focus-within:text-[var(--accent)] transition-colors z-10 pointer-events-none">
+            <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--text-muted)] group-focus-within:text-[var(--text-primary)] transition-colors z-10 pointer-events-none">
               {icon}
             </div>
           )}
@@ -31,32 +37,16 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             ref={ref}
             id={inputId}
             type={inputType}
-            placeholder=" " // Required for floating label peer-placeholder-shown
             className={cn(
-              'peer w-full bg-[rgba(255,255,255,0.03)] border border-[var(--border)] rounded-xl px-4 pt-6 pb-2 text-[var(--text-primary)] text-base outline-none transition-all',
-              'hover:border-[var(--border-hover)] focus:bg-[var(--bg-card)] focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent-subtle)]',
-              icon && 'pl-11',
-              (iconRight || isPassword) && 'pr-11',
+              'w-full bg-[var(--bg-elevated)] border border-[var(--border)] rounded-xl px-4 py-3 text-[var(--text-primary)] text-sm outline-none transition-all shadow-sm',
+              'hover:border-[var(--border-hover)] focus:bg-[var(--bg-card)] focus:border-[var(--accent)] focus:ring-[3px] focus:ring-[var(--accent-subtle)]',
+              icon && 'pl-10',
+              (iconRight || isPassword) && 'pr-10',
               error && 'border-red-500/60 focus:border-red-500 focus:ring-red-500/10',
               className
             )}
             {...props}
           />
-          {label && (
-            <label 
-              htmlFor={inputId} 
-              className={cn(
-                "absolute text-[var(--text-muted)] text-base duration-200 transform -translate-y-3 scale-75 top-4 z-10 origin-[0] pointer-events-none",
-                icon ? "left-11" : "left-4",
-                "peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0",
-                "peer-focus:scale-75 peer-focus:-translate-y-3 peer-focus:text-[var(--accent)]",
-                error && "text-red-500 peer-focus:text-red-500"
-              )}
-            >
-              {label}
-              {props.required && <span className="text-red-400 ml-1">*</span>}
-            </label>
-          )}
           
           {isPassword ? (
             <button
@@ -97,7 +87,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     return (
       <div className="w-full">
         {label && (
-          <label htmlFor={inputId} className="input-label">
+          <label htmlFor={inputId} className="block text-sm font-medium text-[var(--text-primary)] mb-2">
             {label}
             {props.required && <span className="text-red-400 ml-1">*</span>}
           </label>
@@ -133,7 +123,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
     return (
       <div className="w-full">
         {label && (
-          <label htmlFor={inputId} className="input-label">
+          <label htmlFor={inputId} className="block text-sm font-medium text-[var(--text-primary)] mb-2">
             {label}
             {props.required && <span className="text-red-400 ml-1">*</span>}
           </label>

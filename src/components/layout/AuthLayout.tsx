@@ -119,7 +119,7 @@ export function AuthLayout({
             <p className="text-[var(--text-secondary)] mt-2">{subtitle}</p>
           </div>
 
-          <div className="bg-[var(--bg-glass)] backdrop-blur-3xl md:bg-transparent md:backdrop-blur-none border border-[var(--border)] md:border-transparent shadow-[0_32px_64px_rgba(0,0,0,0.06)] md:shadow-none dark:shadow-[0_32px_64px_rgba(0,0,0,0.3)] md:dark:shadow-none rounded-[2rem] p-6 sm:p-8 md:p-0">
+          <div className="bg-[var(--bg-card)] backdrop-blur-3xl border border-[var(--border)] shadow-[0_32px_64px_rgba(0,0,0,0.06)] dark:shadow-[0_32px_64px_rgba(0,0,0,0.3)] rounded-[2rem] p-6 sm:p-8 lg:p-10 w-full">
             {children}
           </div>
 
