@@ -111,7 +111,7 @@ function JobFeedContent() {
                 placeholder="Job title, keyword, or company..."
                 value={filters.search}
                 onChange={(e) => setFilters((f) => ({ ...f, search: e.target.value }))}
-                className="input w-full pl-5 py-3.5 text-base"
+                className="input w-full text-base"
                 aria-label="Search jobs"
               />
             </div>

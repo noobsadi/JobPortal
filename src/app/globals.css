@@ -307,11 +307,14 @@ body {
 
 /* Input base */
 .input {
+  box-sizing: border-box;
   width: 100%;
+  min-height: 48px;
   background: rgba(255,255,255,0.04);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 11px 14px;
+  padding: 0 16px;
+  line-height: 46px;
   font-size: 14px;
   color: var(--text-primary);
   font-family: 'Inter', sans-serif;
@@ -326,7 +329,12 @@ body {
 }
 .input:hover:not(:focus) { border-color: var(--border-hover); }
 
-textarea.input { resize: vertical; min-height: 100px; }
+textarea.input { 
+  resize: vertical; 
+  min-height: 100px;
+  line-height: 1.6;
+  padding: 12px 16px;
+}
 
 .input-label {
   display: block;

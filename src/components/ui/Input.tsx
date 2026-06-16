@@ -40,7 +40,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {icon && (
             <div
               className={cn(
-                'absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none transition-colors duration-200',
+                'absolute left-3 top-1/2 -translate-y-1/2 w-5 flex justify-center pointer-events-none transition-colors duration-200',
                 error ? 'text-red-400' : 'text-[var(--text-muted)]'
               )}
               aria-hidden="true"
@@ -60,15 +60,15 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
               'w-full rounded-xl border bg-[var(--bg-elevated)] text-[var(--text-primary)] text-sm',
               'outline-none transition-all duration-200',
               // Sizing
-              'h-11 px-3.5',
+              'h-12 px-4',
               // Placeholder
               'placeholder:text-[var(--text-muted)] placeholder:text-sm',
               // States
               'hover:border-[var(--border-hover)]',
               'focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/15 focus:bg-[var(--bg-card)]',
               // Icon padding
-              icon && 'pl-10',
-              (iconRight || isPassword) && 'pr-10',
+              icon && 'pl-[44px]',
+              (iconRight || isPassword) && 'pr-[44px]',
               // Error
               error
                 ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/10'
@@ -83,14 +83,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 p-0.5 rounded-md text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]/30"
+              className="absolute right-3 top-1/2 -translate-y-1/2 w-5 flex justify-center p-0.5 rounded-md text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]/30"
               tabIndex={-1}
               aria-label={showPassword ? 'Hide password' : 'Show password'}
             >
               {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
             </button>
           ) : iconRight ? (
-            <div className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)] pointer-events-none" aria-hidden="true">
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 w-5 flex justify-center text-[var(--text-muted)] pointer-events-none" aria-hidden="true">
               {iconRight}
             </div>
           ) : null}
@@ -151,7 +151,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           className={cn(
             'w-full rounded-xl border bg-[var(--bg-elevated)] text-[var(--text-primary)] text-sm',
             'outline-none transition-all duration-200',
-            'px-3.5 py-2.5',
+            'px-4 py-3',
             'placeholder:text-[var(--text-muted)] placeholder:text-sm',
             'hover:border-[var(--border-hover)]',
             'focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/15 focus:bg-[var(--bg-card)]',
@@ -215,7 +215,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
           className={cn(
             'w-full rounded-xl border bg-[var(--bg-elevated)] text-[var(--text-primary)] text-sm',
             'outline-none transition-all duration-200',
-            'h-11 px-3.5',
+            'h-12 px-4',
             'hover:border-[var(--border-hover)]',
             'focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/15 focus:bg-[var(--bg-card)]',
             'appearance-none cursor-pointer',
