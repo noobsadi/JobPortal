@@ -29,13 +29,14 @@ interface SkillBadgeProps {
   missing?: boolean;
   onClick?: () => void;
   removable?: boolean;
+  className?: string;
 }
 
-export function SkillBadge({ name, matched, missing, onClick, removable }: SkillBadgeProps) {
+export function SkillBadge({ name, matched, missing, onClick, removable, className }: SkillBadgeProps) {
   const variant = matched ? 'success' : missing ? 'danger' : 'primary';
   return (
     <span
-      className={cn('badge', `badge-${variant}`, onClick && 'cursor-pointer hover:opacity-80 transition-opacity')}
+      className={cn('badge', `badge-${variant}`, onClick && 'cursor-pointer hover:opacity-80 transition-opacity', className)}
       onClick={onClick}
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}

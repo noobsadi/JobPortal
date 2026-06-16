@@ -59,7 +59,7 @@ export function MatchScoreRing({
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <span
             className="font-bold leading-none"
-            style={{ color: text, fontSize: size * 0.22 }}
+            style={{ color: text, fontSize: Math.max(14, size * 0.22) }}
           >
             {score}%
           </span>

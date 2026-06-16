@@ -72,7 +72,7 @@ export function CompanyLogo({ src, name, size = 48, className }: CompanyLogoProp
   if (src) {
     return (
       <div
-        className={cn('relative rounded-xl overflow-hidden shrink-0 bg-[var(--bg-elevated)]', className)}
+        className={cn('relative rounded-full overflow-hidden shrink-0 bg-[var(--bg-elevated)]', className)}
         style={{ width: size, height: size }}
       >
         <Image src={src} alt={name} fill className="object-contain p-1" />
@@ -82,11 +82,11 @@ export function CompanyLogo({ src, name, size = 48, className }: CompanyLogoProp
   return (
     <div
       className={cn(
-        'rounded-xl flex items-center justify-center shrink-0 font-bold text-white',
+        'rounded-full flex items-center justify-center shrink-0 font-bold text-white',
         'bg-gradient-to-br from-violet-700 to-indigo-700',
         className
       )}
-      style={{ width: size, height: size, fontSize: size * 0.35 }}
+      style={{ width: size, height: size, fontSize: size * 0.5 }}
     >
       {name.charAt(0).toUpperCase()}
     </div>

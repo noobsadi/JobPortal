@@ -165,7 +165,7 @@ function JobFeedContent() {
               </div>
 
               {loading ? (
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-5">
                   {Array.from({ length: 6 }).map((_, i) => <JobCardSkeleton key={i} />)}
                 </div>
               ) : jobs.length === 0 ? (
@@ -175,7 +175,7 @@ function JobFeedContent() {
                   <p className="text-sm text-[var(--text-muted)]">Try adjusting your search filters.</p>
                 </div>
               ) : (
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-5">
                   {jobs.map((job) => (
                     <JobCard
                       key={job.id}
