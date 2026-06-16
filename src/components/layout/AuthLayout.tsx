@@ -28,7 +28,7 @@ export function AuthLayout({
   return (
     <div className="min-h-screen flex flex-col lg:flex-row bg-[var(--bg-base)] overflow-hidden">
       {/* ─── Left Pane: Brand + Social Proof (desktop only) ─── */}
-      <div className="hidden lg:flex lg:w-[42%] xl:w-[38%] relative flex-col justify-between p-10 xl:p-14 overflow-hidden bg-[var(--bg-surface)]">
+      <div className="hidden lg:flex lg:w-[42%] xl:w-[38%] relative flex-col items-start justify-center p-10 xl:p-14 overflow-hidden bg-[var(--bg-surface)]">
         {/* Animated background blobs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
@@ -52,7 +52,7 @@ export function AuthLayout({
         </div>
 
         {/* Logo */}
-        <Link href="/" className="relative z-10 flex items-center gap-2.5 group w-max">
+        <Link href="/" className="absolute top-10 left-10 xl:top-14 xl:left-14 z-10 flex items-center gap-2.5 group w-max">
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -70,7 +70,7 @@ export function AuthLayout({
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="relative z-10 mt-auto"
+          className="relative z-10 max-w-md"
         >
           <blockquote className="space-y-4">
             <div className="flex gap-1">
