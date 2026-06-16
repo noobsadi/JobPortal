@@ -216,7 +216,6 @@ export default function SignupPage() {
                   type="email"
                   placeholder="you@example.com"
                   autoComplete="email"
-                  icon={<Mail size={16} />}
                   error={e1.email?.message}
                   {...r1('email')}
                 />
@@ -229,7 +228,6 @@ export default function SignupPage() {
                     type="password"
                     placeholder="Min 8 characters"
                     autoComplete="new-password"
-                    icon={<Lock size={16} />}
                     error={e1.password?.message}
                     {...r1('password')}
                   />
@@ -238,7 +236,6 @@ export default function SignupPage() {
                     type="password"
                     placeholder="Re-enter password"
                     autoComplete="new-password"
-                    icon={<Lock size={16} />}
                     error={e1.confirmPassword?.message}
                     {...r1('confirmPassword')}
                   />
