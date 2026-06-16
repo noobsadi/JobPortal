@@ -152,15 +152,15 @@ export function Navbar() {
             </div>
 
             {/* ─── Center: Desktop Nav Links ─── */}
-            <nav className="hidden md:flex items-center gap-1">
+            <nav className="hidden md:flex items-center gap-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    'px-3.5 py-2 rounded-full text-sm font-medium transition-all duration-200',
+                    'px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200',
                     pathname === link.href
-                      ? 'text-[var(--text-primary)] bg-[var(--bg-card-hover)]'
+                      ? 'text-white bg-[var(--accent)] shadow-sm'
                       : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)]'
                   )}
                 >
@@ -330,9 +330,9 @@ export function Navbar() {
                         href={link.href}
                         onClick={() => setMenuOpen(false)}
                         className={cn(
-                          'flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-medium transition-colors duration-150',
+                          'flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold transition-colors duration-150',
                           pathname === link.href
-                            ? 'text-[var(--text-primary)] bg-[var(--bg-card-hover)]'
+                            ? 'text-white bg-[var(--accent)] shadow-sm'
                             : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)]'
                         )}
                       >
