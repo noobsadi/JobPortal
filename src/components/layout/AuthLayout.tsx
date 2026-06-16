@@ -127,7 +127,7 @@ export function AuthLayout({
         >
           {/* Header */}
           <div className="text-center lg:text-left mb-6">
-            <h1 className="text-2xl sm:text-3xl font-display font-bold text-[var(--text-primary)] tracking-tight">
+            <h1 className="text-3xl sm:text-4xl font-display font-bold text-[var(--text-primary)] tracking-tight">
               {title}
             </h1>
             <p className="text-sm text-[var(--text-secondary)] mt-1.5">{subtitle}</p>

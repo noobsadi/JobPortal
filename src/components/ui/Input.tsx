@@ -28,7 +28,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           <label
             htmlFor={inputId}
             className={cn(
-              'block text-[13px] font-medium mb-1.5 transition-colors',
+              'block text-[15px] font-medium mb-1.5 transition-colors',
               error ? 'text-red-500' : 'text-[var(--text-secondary)]'
             )}
           >
@@ -37,27 +37,17 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           </label>
         )}
         <div className="relative">
-          {icon && (
-            <div
-              className={cn(
-                'absolute left-3 top-1/2 -translate-y-1/2 w-5 flex justify-center pointer-events-none transition-colors duration-200',
-                error ? 'text-red-400' : 'text-[var(--text-muted)]'
-              )}
-              aria-hidden="true"
-            >
-              {icon}
-            </div>
-          )}
           <input
             ref={ref}
             id={inputId}
             type={inputType}
-            placeholder={placeholder || label || ''}
+            placeholder={placeholder || label || ' '}
             aria-invalid={!!error}
             aria-describedby={error ? `${inputId}-error` : hint ? `${inputId}-hint` : undefined}
             className={cn(
+              'peer',
               // Base
-              'w-full rounded-xl border bg-[var(--bg-elevated)] text-[var(--text-primary)] text-sm',
+              'w-full rounded-none border bg-[var(--bg-elevated)] text-[var(--text-primary)] text-sm',
               'outline-none transition-all duration-200',
               // Sizing
               'h-12 px-4',
@@ -67,7 +57,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
               'hover:border-[var(--border-hover)]',
               'focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/15 focus:bg-[var(--bg-card)]',
               // Icon padding
-              icon && 'pl-[44px]',
+              icon && 'pl-4 placeholder-shown:pl-[44px] focus:pl-4',
               (iconRight || isPassword) && 'pr-[44px]',
               // Error
               error
@@ -79,6 +69,18 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             )}
             {...props}
           />
+          {icon && (
+            <div
+              className={cn(
+                'absolute left-3 top-1/2 -translate-y-1/2 w-5 flex justify-center pointer-events-none transition-all duration-200',
+                error ? 'text-red-400' : 'text-[var(--text-muted)]',
+                'opacity-0 scale-75 peer-placeholder-shown:opacity-100 peer-placeholder-shown:scale-100 peer-focus:opacity-0 peer-focus:scale-75'
+              )}
+              aria-hidden="true"
+            >
+              {icon}
+            </div>
+          )}
           {isPassword ? (
             <button
               type="button"
@@ -134,7 +136,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           <label
             htmlFor={inputId}
             className={cn(
-              'block text-[13px] font-medium mb-1.5 transition-colors',
+              'block text-[15px] font-medium mb-1.5 transition-colors',
               error ? 'text-red-500' : 'text-[var(--text-secondary)]'
             )}
           >
@@ -149,7 +151,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           aria-invalid={!!error}
           aria-describedby={error ? `${inputId}-error` : hint ? `${inputId}-hint` : undefined}
           className={cn(
-            'w-full rounded-xl border bg-[var(--bg-elevated)] text-[var(--text-primary)] text-sm',
+            'w-full rounded-none border bg-[var(--bg-elevated)] text-[var(--text-primary)] text-sm',
             'outline-none transition-all duration-200',
             'px-4 py-3',
             'placeholder:text-[var(--text-muted)] placeholder:text-sm',
@@ -200,7 +202,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
           <label
             htmlFor={inputId}
             className={cn(
-              'block text-[13px] font-medium mb-1.5 transition-colors',
+              'block text-[15px] font-medium mb-1.5 transition-colors',
               error ? 'text-red-500' : 'text-[var(--text-secondary)]'
             )}
           >
@@ -213,7 +215,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
           id={inputId}
           aria-invalid={!!error}
           className={cn(
-            'w-full rounded-xl border bg-[var(--bg-elevated)] text-[var(--text-primary)] text-sm',
+            'w-full rounded-none border bg-[var(--bg-elevated)] text-[var(--text-primary)] text-sm',
             'outline-none transition-all duration-200',
             'h-12 px-4',
             'hover:border-[var(--border-hover)]',
