@@ -218,44 +218,44 @@ export function Navbar() {
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: -4, scale: 0.97 }}
                             transition={{ duration: 0.15, ease: [0.4, 0, 0.2, 1] }}
-                            className="absolute right-0 top-full mt-2 w-56 z-20 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border)] shadow-[0_10px_38px_rgba(0,0,0,0.1),0_2px_8px_rgba(0,0,0,0.06)] dark:shadow-[0_10px_38px_rgba(0,0,0,0.4)] overflow-hidden"
+                            className="absolute right-0 top-full mt-2 w-72 z-20 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border)] shadow-[0_10px_38px_rgba(0,0,0,0.1),0_2px_8px_rgba(0,0,0,0.06)] dark:shadow-[0_10px_38px_rgba(0,0,0,0.4)] overflow-hidden"
                             role="menu"
                           >
-                            <div className="px-4 py-3.5 border-b border-[var(--border)]">
-                              <p className="text-sm font-semibold text-[var(--text-primary)] truncate">
+                            <div className="px-5 py-4 border-b border-[var(--border)]">
+                              <p className="text-base font-semibold text-[var(--text-primary)] truncate">
                                 {seekerProfile
                                   ? `${seekerProfile.first_name} ${seekerProfile.last_name}`
                                   : user.email}
                               </p>
-                              <p className="text-xs text-[var(--text-muted)] capitalize mt-0.5">
+                              <p className="text-sm text-[var(--text-muted)] capitalize mt-0.5">
                                 {dbUser?.role}
                               </p>
                             </div>
-                            <div className="p-1.5">
+                            <div className="p-2">
                               <Link
                                 href={dashboardPath}
                                 role="menuitem"
-                                className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] transition-colors duration-150"
+                                className="flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] transition-colors duration-150"
                               >
-                                <LayoutDashboard size={16} className="text-[var(--accent)]" /> Dashboard
+                                <LayoutDashboard size={18} className="text-[var(--accent)]" /> Dashboard
                               </Link>
                               {dbUser?.role === 'seeker' && (
                                 <Link
                                   href="/dashboard/seeker/profile"
                                   role="menuitem"
-                                  className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] transition-colors duration-150"
+                                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] transition-colors duration-150"
                                 >
-                                  <UserIcon size={16} className="text-blue-500" /> My Profile
+                                  <UserIcon size={18} className="text-blue-500" /> My Profile
                                 </Link>
                               )}
                             </div>
-                            <div className="p-1.5 border-t border-[var(--border)]">
+                            <div className="p-2 border-t border-[var(--border)]">
                               <button
                                 role="menuitem"
                                 onClick={handleSignOut}
-                                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-red-500 hover:bg-red-500/10 transition-colors duration-150"
+                                className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium text-red-500 hover:bg-red-500/10 transition-colors duration-150"
                               >
-                                <LogOut size={16} /> Sign Out
+                                <LogOut size={18} /> Sign Out
                               </button>
                             </div>
                           </motion.div>
