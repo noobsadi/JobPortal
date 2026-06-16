@@ -87,7 +87,6 @@ function LoginForm() {
             type="email"
             placeholder="you@example.com"
             autoComplete="email"
-            icon={<Mail size={16} />}
             error={errors.email?.message}
             {...register('email')}
           />
@@ -99,7 +98,6 @@ function LoginForm() {
             type="password"
             placeholder="••••••••"
             autoComplete="current-password"
-            icon={<Lock size={16} />}
             error={errors.password?.message}
             {...register('password')}
           />
