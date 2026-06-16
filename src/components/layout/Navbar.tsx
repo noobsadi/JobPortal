@@ -111,7 +111,7 @@ export function Navbar() {
         )}
       >
         <div className="container-app">
-          <div className="flex items-center h-16">
+          <div className="flex items-center h-16 gap-6 md:gap-8">
             {/* ─── Left: Hamburger + Logo ─── */}
             <div className="flex items-center gap-2 md:gap-3">
               {/* Hamburger */}
@@ -152,7 +152,7 @@ export function Navbar() {
             </div>
 
             {/* ─── Center: Desktop Nav Links ─── */}
-            <nav className="hidden md:flex items-center gap-1 ml-8">
+            <nav className="hidden md:flex items-center gap-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
