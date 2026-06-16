@@ -99,12 +99,12 @@ function JobFeedContent() {
             Find Your Perfect<br />
             <span className="gradient-text">Next Role</span>
           </h1>
-          <p className="text-lg text-[var(--text-secondary)] max-w-xl mx-auto mb-8 leading-relaxed">
+          <p className="text-lg text-[var(--text-secondary)] max-w-xl mx-auto mb-8 leading-relaxed" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
             Discover jobs matched to your skills. See your compatibility score before you apply.
           </p>
 
           {/* Inline search */}
-          <div className="flex flex-col sm:flex-row gap-3 w-full max-w-3xl mx-auto justify-center" style={{ marginBottom: '60px' }}>
+          <div className="flex flex-col sm:flex-row gap-3 w-full max-w-3xl mx-auto justify-center" style={{ marginLeft: 'auto', marginRight: 'auto', marginBottom: '60px' }}>
             <div className="relative flex-1">
               <input
                 type="search"
@@ -124,7 +124,7 @@ function JobFeedContent() {
           </div>
 
           {/* Stats row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
             {STATS.map(({ icon: Icon, label, value }) => (
               <div key={label} className="glass-card px-4 py-4 text-center">
                 <div className="flex justify-center mb-2">
