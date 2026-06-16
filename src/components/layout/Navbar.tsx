@@ -10,7 +10,8 @@ import { Button } from '@/components/ui/Button';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import {
   Briefcase, Bell, ChevronDown, LogOut,
-  User as UserIcon, LayoutDashboard, X, Zap, Search
+  User as UserIcon, LayoutDashboard, X, Zap, Search,
+  PlusSquare, Users
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -362,6 +363,35 @@ export function Navbar() {
                       <UserIcon size={18} />
                       My Profile
                     </Link>
+                  )}
+
+                  {user && dbUser?.role === 'employer' && (
+                    <>
+                      <Link
+                        href="/dashboard/employer/jobs"
+                        onClick={() => setMenuOpen(false)}
+                        className="flex items-center gap-4 px-4 py-4 rounded-xl text-[22px] font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] transition-colors duration-150"
+                      >
+                        <Briefcase size={18} />
+                        Job Postings
+                      </Link>
+                      <Link
+                        href="/dashboard/employer/jobs/new"
+                        onClick={() => setMenuOpen(false)}
+                        className="flex items-center gap-4 px-4 py-4 rounded-xl text-[22px] font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] transition-colors duration-150"
+                      >
+                        <PlusSquare size={18} />
+                        Post a Job
+                      </Link>
+                      <Link
+                        href="/dashboard/employer/pipeline"
+                        onClick={() => setMenuOpen(false)}
+                        className="flex items-center gap-4 px-4 py-4 rounded-xl text-[22px] font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] transition-colors duration-150"
+                      >
+                        <Users size={18} />
+                        Candidates
+                      </Link>
+                    </>
                   )}
                 </div>
               </nav>
