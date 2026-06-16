@@ -104,7 +104,7 @@ function JobFeedContent() {
           </p>
 
           {/* Inline search */}
-          <div className="flex flex-col sm:flex-row gap-3 w-full max-w-2xl mx-auto justify-center" style={{ marginBottom: '60px' }}>
+          <div className="flex flex-col sm:flex-row gap-3 w-full max-w-3xl mx-auto justify-center" style={{ marginBottom: '60px' }}>
             <div className="relative flex-1">
               <input
                 type="search"
