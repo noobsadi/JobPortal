@@ -235,17 +235,17 @@ export function Navbar() {
                               <Link
                                 href={dashboardPath}
                                 role="menuitem"
-                                className="flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] transition-colors duration-150"
+                                className="flex items-center gap-3 px-4 py-3 rounded-xl text-[20px] font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] transition-colors duration-150"
                               >
-                                <LayoutDashboard size={18} className="text-[var(--accent)]" /> Dashboard
+                                <LayoutDashboard size={22} className="text-[var(--accent)]" /> Dashboard
                               </Link>
                               {dbUser?.role === 'seeker' && (
                                 <Link
                                   href="/dashboard/seeker/profile"
                                   role="menuitem"
-                                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] transition-colors duration-150"
+                                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-[20px] font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] transition-colors duration-150"
                                 >
-                                  <UserIcon size={18} className="text-blue-500" /> My Profile
+                                  <UserIcon size={22} className="text-blue-500" /> My Profile
                                 </Link>
                               )}
                             </div>
@@ -253,9 +253,9 @@ export function Navbar() {
                               <button
                                 role="menuitem"
                                 onClick={handleSignOut}
-                                className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium text-red-500 hover:bg-red-500/10 transition-colors duration-150"
+                                className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-[20px] font-medium text-red-500 hover:bg-red-500/10 transition-colors duration-150"
                               >
-                                <LogOut size={18} /> Sign Out
+                                <LogOut size={22} /> Sign Out
                               </button>
                             </div>
                           </motion.div>
