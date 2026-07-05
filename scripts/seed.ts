@@ -25,6 +25,45 @@ const NUM_EMPLOYERS = 15;
 const NUM_SEEKERS = 30;
 const PASSWORD = 'Password123!';
 
+const BANGLADESHI_FIRST_NAMES = [
+  'Sakhawat', 'Tanvir', 'Rakib', 'Sadia', 'Nusrat', 'Nafis', 'Anika', 'Rahim', 'Karim',
+  'Mahmudullah', 'Tamim', 'Mashrafe', 'Mustafizur', 'Mehidy', 'Litton', 'Mominul',
+  'Taskin', 'Shoriful', 'Najmul', 'Towhid', 'Jaker', 'Shamim', 'Hasan', 'Rishad',
+  'Tanzim', 'Tanzid', 'Fahim', 'Arif', 'Sumaiya', 'Jannatul', 'Farhana', 'Mehedi',
+  'Shahriar', 'Imran', 'Faysal', 'Ashraful', 'Tarek', 'Rubel', 'Sabrina', 'Tasnim',
+  'Sakib', 'Shakib', 'Mushfiqur', 'Anamul', 'Soumya', 'Habibur', 'Hasibul', 'Kazi',
+  'Tariqul', 'Shafiqul', 'Rafiqul', 'Aminul', 'Rezaul', 'Nazmul', 'Kamrul', 'Saiful'
+];
+
+const BANGLADESHI_LAST_NAMES = [
+  'Hosen', 'Ahmed', 'Rahman', 'Chowdhury', 'Khan', 'Islam', 'Uddin', 'Siddique',
+  'Hasan', 'Alam', 'Ali', 'Hossain', 'Mia', 'Sikder', 'Talukder', 'Mozumder',
+  'Bhuiyan', 'Akter', 'Khatun', 'Begum', 'Sultana', 'Sarkar', 'Biswas', 'Das',
+  'Ghosh', 'Roy', 'Saha', 'Shil', 'Paul', 'Dutta', 'Dey', 'Sen', 'Sinha', 'Choudhury'
+];
+
+const BANGLADESHI_COMPANIES = [
+  'Pathao', 'bKash', 'Nagad', 'Brain Station 23', 'TigerIT', 'Enosis Solutions',
+  'Therap BD', 'Kaz Software', 'Selise', 'Vivasoft', 'Chaldal', 'ShopUp', 'SouthTech',
+  'DataSoft', 'BJIT', 'Reve Systems', 'Appnext', 'Magnito Digital', 'TenMinuteSchool',
+  'Shikho', 'Ollyo', 'Lead Academy', 'ShareTrip', 'Shohoz', 'Truck Lagbe', 'Arogga',
+  'Sheba.xyz', 'Cramstack', 'Sigmind', 'Bondstein', 'Grameenphone', 'Robi', 'Banglalink'
+];
+
+const BANGLADESHI_LOCATIONS = [
+  'Dhaka, Bangladesh', 'Chattogram, Bangladesh', 'Sylhet, Bangladesh',
+  'Rajshahi, Bangladesh', 'Khulna, Bangladesh', 'Banani, Dhaka',
+  'Gulshan, Dhaka', 'Mirpur, Dhaka', 'Uttara, Dhaka', 'Dhanmondi, Dhaka',
+  'Motijheel, Dhaka', 'Mohakhali, Dhaka', 'Agrabad, Chattogram', 'Remote, Bangladesh'
+];
+
+const BANGLADESHI_UNIVERSITIES = [
+  'BUET', 'Dhaka University', 'BRAC University', 'North South University',
+  'IUT', 'SUST', 'Jahangirnagar University', 'Rajshahi University',
+  'Ahsanullah University of Science and Technology', 'East West University',
+  'Daffodil International University', 'AIUB', 'UIU', 'Khulna University', 'Chittagong University'
+];
+
 async function seed() {
   console.log('🚀 Starting database seed...');
 
@@ -39,8 +78,8 @@ async function seed() {
 
     // 2. Generate Companies
     console.log(`🏢 Creating ${NUM_COMPANIES} companies...`);
-    const companiesToInsert = Array.from({ length: NUM_COMPANIES }).map(() => ({
-      name: faker.company.name(),
+    const companiesToInsert = Array.from({ length: NUM_COMPANIES }).map((_, idx) => ({
+      name: BANGLADESHI_COMPANIES[idx % BANGLADESHI_COMPANIES.length] + (idx >= BANGLADESHI_COMPANIES.length ? ` ${Math.floor(idx / BANGLADESHI_COMPANIES.length) + 1}` : ''),
       industry: faker.helpers.arrayElement(['Engineering', 'Design', 'Data & AI', 'Marketing', 'Business', 'Finance', 'Healthcare']),
       description: faker.company.catchPhrase() + '. ' + faker.lorem.paragraph(),
       website_url: faker.internet.url(),
@@ -105,7 +144,7 @@ async function seed() {
           title: faker.person.jobTitle(),
           description: faker.lorem.paragraphs(3),
           job_type: faker.helpers.arrayElement(['full_time', 'part_time', 'contract', 'internship', 'remote']),
-          location: faker.location.city() + ', ' + faker.location.state({ abbreviated: true }),
+          location: faker.helpers.arrayElement(BANGLADESHI_LOCATIONS),
           salary_min: faker.number.int({ min: 50000, max: 90000 }),
           salary_max: faker.number.int({ min: 100000, max: 200000 }),
           status: faker.helpers.arrayElement(['open', 'open', 'open', 'closed']),
@@ -158,11 +197,11 @@ async function seed() {
       const { error: spErr } = await supabase
         .from('seeker_profiles')
         .update({
-          first_name: faker.person.firstName(),
-          last_name: faker.person.lastName(),
+          first_name: faker.helpers.arrayElement(BANGLADESHI_FIRST_NAMES),
+          last_name: faker.helpers.arrayElement(BANGLADESHI_LAST_NAMES),
           headline: faker.person.jobTitle(),
           bio: faker.lorem.paragraph(),
-          location: faker.location.city() + ', ' + faker.location.state({ abbreviated: true }),
+          location: faker.helpers.arrayElement(BANGLADESHI_LOCATIONS),
           github_url: `https://github.com/${faker.internet.username()}`,
           avatar_url: faker.image.avatar(),
         })
@@ -175,7 +214,7 @@ async function seed() {
       for (let j = 0; j < numExp; j++) {
         seekerExperiences.push({
           seeker_id: userId,
-          company_name: faker.company.name(),
+          company_name: faker.helpers.arrayElement(BANGLADESHI_COMPANIES),
           job_title: faker.person.jobTitle(),
           start_date: faker.date.past({ years: 5 }).toISOString().split('T')[0],
           end_date: faker.datatype.boolean() ? faker.date.recent().toISOString().split('T')[0] : null,
@@ -189,7 +228,7 @@ async function seed() {
       for (let j = 0; j < numEdu; j++) {
         seekerEducations.push({
           seeker_id: userId,
-          institution_name: faker.company.name() + ' University',
+          institution_name: faker.helpers.arrayElement(BANGLADESHI_UNIVERSITIES),
           degree: faker.helpers.arrayElement(['B.S.', 'M.S.', 'Ph.D.', 'B.A.']),
           field_of_study: faker.helpers.arrayElement(['Computer Science', 'Business', 'Design', 'Data Science']),
           start_date: faker.date.past({ years: 10 }).toISOString().split('T')[0],

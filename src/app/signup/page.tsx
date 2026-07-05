@@ -303,14 +303,14 @@ export default function SignupPage() {
                   <div className="grid grid-cols-2 gap-3">
                     <Input
                       label="First Name"
-                      placeholder="Jane"
+                      placeholder="Sadia"
                       icon={<User size={16} />}
                       error={e2s.firstName?.message}
                       {...r2s('firstName')}
                     />
                     <Input
                       label="Last Name"
-                      placeholder="Doe"
+                      placeholder="Rahman"
                       icon={<User size={16} />}
                       error={e2s.lastName?.message}
                       {...r2s('lastName')}
@@ -322,7 +322,7 @@ export default function SignupPage() {
                   <FadeUp>
                     <Input
                       label="Company Name"
-                      placeholder="Acme Inc."
+                      placeholder="Pathao / bKash"
                       icon={<Building2 size={16} />}
                       error={e2e.companyName?.message}
                       {...r2e('companyName')}

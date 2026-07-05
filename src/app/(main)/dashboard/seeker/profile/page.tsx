@@ -256,7 +256,7 @@ export default function ProfileBuilderPage() {
                   </div>
                   <Input label="Professional headline" placeholder="e.g. Senior React Developer at Stripe" {...register('headline')} />
                   <Textarea label="Bio" placeholder="Tell employers about yourself..." rows={4} {...register('bio')} />
-                  <Input label="Location" placeholder="San Francisco, CA" icon={<MapPin size={14} />} {...register('location')} />
+                  <Input label="Location" placeholder="Dhaka, Bangladesh" icon={<MapPin size={14} />} {...register('location')} />
                   <Input label="GitHub URL" placeholder="https://github.com/username" icon={<Code2 size={14} />} error={errors.github_url?.message} {...register('github_url')} />
 
                   <div>
@@ -402,7 +402,7 @@ export default function ProfileBuilderPage() {
       {/* Experience Modal */}
       <Modal open={expModal.open} onClose={() => setExpModal({ open: false })} title={expModal.editing ? 'Edit Experience' : 'Add Experience'} size="md">
         <form onSubmit={expForm.handleSubmit(onExpSave)} className="space-y-4">
-          <Input label="Company" placeholder="Acme Corp" error={expForm.formState.errors.company_name?.message} {...expForm.register('company_name')} />
+          <Input label="Company" placeholder="Enosis Solutions" error={expForm.formState.errors.company_name?.message} {...expForm.register('company_name')} />
           <Input label="Job title" placeholder="Software Engineer" error={expForm.formState.errors.job_title?.message} {...expForm.register('job_title')} />
           <div className="grid grid-cols-2 gap-4">
             <Input label="Start date" type="date" error={expForm.formState.errors.start_date?.message} {...expForm.register('start_date')} />
@@ -423,7 +423,7 @@ export default function ProfileBuilderPage() {
       {/* Education Modal */}
       <Modal open={eduModal.open} onClose={() => setEduModal({ open: false })} title={eduModal.editing ? 'Edit Education' : 'Add Education'} size="md">
         <form onSubmit={eduForm.handleSubmit(onEduSave)} className="space-y-4">
-          <Input label="Institution" placeholder="MIT" error={eduForm.formState.errors.institution_name?.message} {...eduForm.register('institution_name')} />
+          <Input label="Institution" placeholder="BUET" error={eduForm.formState.errors.institution_name?.message} {...eduForm.register('institution_name')} />
           <Input label="Degree" placeholder="Bachelor of Science" error={eduForm.formState.errors.degree?.message} {...eduForm.register('degree')} />
           <Input label="Field of study" placeholder="Computer Science" {...eduForm.register('field_of_study')} />
           <div className="grid grid-cols-2 gap-4">

@@ -42,9 +42,9 @@ async function seed() {
   // 2. Create Companies
   console.log("Creating companies...");
   const companiesData = [
-    { name: 'TechFlow Solutions', industry: 'Software', description: 'A fast-growing B2B SaaS company.' },
-    { name: 'GreenEnergy Corp', industry: 'Renewables', description: 'Building the future of sustainable energy.' },
-    { name: 'Nexus Innovations', industry: 'Fintech', description: 'Disrupting traditional banking.' }
+    { name: 'Pathao', industry: 'Software', description: 'A fast-growing ride-sharing and logistics company in Bangladesh.' },
+    { name: 'bKash', industry: 'Fintech', description: 'Building the future of mobile financial services in Bangladesh.' },
+    { name: 'Brain Station 23', industry: 'Software', description: 'Leading software development and IT services company.' }
   ];
 
   const { data: companies, error: companiesError } = await supabase
@@ -78,7 +78,7 @@ async function seed() {
       posted_by_user_id: employerId,
       title: 'Senior Frontend Engineer',
       description: 'We are looking for an experienced Frontend Engineer to lead our React architecture.\n\nRequirements:\n- 5+ years experience\n- Next.js expertise',
-      location: 'Remote',
+      location: 'Remote, Bangladesh',
       salary_min: 120000,
       salary_max: 160000,
       job_type: 'full_time',
@@ -88,8 +88,8 @@ async function seed() {
       company_id: companies[1].id,
       posted_by_user_id: employerId,
       title: 'Data Scientist',
-      description: 'Join our renewables team to analyze solar grid data using modern ML frameworks.',
-      location: 'San Francisco, CA',
+      description: 'Join our fintech team to analyze transactional data using modern ML frameworks.',
+      location: 'Dhaka, Bangladesh',
       salary_min: 130000,
       salary_max: 155000,
       job_type: 'full_time',
@@ -100,7 +100,7 @@ async function seed() {
       posted_by_user_id: employerId,
       title: 'UX/UI Designer',
       description: 'Design beautiful fintech products. Must have a strong portfolio demonstrating glassmorphism and modern UI trends.',
-      location: 'New York, NY (Hybrid)',
+      location: 'Banani, Dhaka (Hybrid)',
       salary_min: 90000,
       salary_max: 120000,
       job_type: 'contract',
@@ -111,7 +111,7 @@ async function seed() {
       posted_by_user_id: employerId,
       title: 'Backend Developer (Node.js)',
       description: 'Scale our API infrastructure. We process millions of requests per day.',
-      location: 'Remote',
+      location: 'Remote, Bangladesh',
       salary_min: 110000,
       salary_max: 140000,
       job_type: 'full_time',
@@ -184,11 +184,11 @@ async function seed() {
   console.log("Updating seeker profile...");
   await supabase.from('seeker_profiles').upsert({
     user_id: seekerId,
-    first_name: 'John',
-    last_name: 'Doe',
+    first_name: 'Tanvir',
+    last_name: 'Rahman',
     headline: 'Senior React Developer',
     bio: 'Passionate about building scalable web applications with modern tech stacks.',
-    location: 'Remote'
+    location: 'Dhaka, Bangladesh'
   });
 
   // 8. Seeker Experience
@@ -196,7 +196,7 @@ async function seed() {
   await supabase.from('seeker_experience').insert([
     {
       seeker_id: seekerId,
-      company_name: 'Tech Corp',
+      company_name: 'Enosis Solutions',
       job_title: 'Frontend Developer',
       start_date: '2020-01-01',
       end_date: '2023-01-01',
@@ -205,7 +205,7 @@ async function seed() {
     },
     {
       seeker_id: seekerId,
-      company_name: 'Startup Inc',
+      company_name: 'Pathao',
       job_title: 'Senior Frontend Developer',
       start_date: '2023-01-15',
       is_current_role: true,
@@ -218,7 +218,7 @@ async function seed() {
   await supabase.from('seeker_education').insert([
     {
       seeker_id: seekerId,
-      institution_name: 'State University',
+      institution_name: 'BUET',
       degree: 'B.S.',
       field_of_study: 'Computer Science',
       start_date: '2016-08-01',

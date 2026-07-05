@@ -99,7 +99,7 @@ export default function NewJobPage() {
             <Input label="Job Title" placeholder="e.g. Senior Full-Stack Engineer" required error={errors.title?.message} {...register('title')} />
             <Textarea label="Job Description" placeholder="Describe the role, responsibilities, and what you're looking for..." rows={8} required error={errors.description?.message} {...register('description')} />
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <Input label="Location" placeholder="New York, NY or Remote" {...register('location')} />
+              <Input label="Location" placeholder="Dhaka, Bangladesh or Remote" {...register('location')} />
               <Select
                 label="Job Type"
                 options={[
