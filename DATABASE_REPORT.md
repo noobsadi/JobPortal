@@ -2,7 +2,7 @@
 
 **Project:** JobPortal - A comprehensive job matching platform  
 **Database Platform:** PostgreSQL (via Supabase)  
-**Date:** 2026-07-01  
+**Date:** 2026-07-05 (Updated with Bangladeshi Localization)  
 **Author:** Database Engineering Team
 
 ---
@@ -31,6 +31,7 @@
 - **Interview Scheduling**: Manages interview scheduling and feedback collection
 - **Profile Management**: Comprehensive profile systems for both seekers and employers
 - **Multi-Company Support**: Employers can manage multiple companies and candidates
+- **Localized for Bangladesh**: All database records, sample seeding data, seeker profiles, tech companies (e.g., Pathao, bKash, Brain Station 23), universities (e.g., BUET, Dhaka University), and locations (Dhaka, Chattogram, Sylhet) are tailored to authentic Bangladeshi identities and institutions.
 
 ### System Architecture
 The database employs a relational model with:
@@ -478,53 +479,53 @@ CREATE INDEX idx_interviews_type ON public.interviews(interview_type);
 -- For this demo, using sample UUIDs:
 
 INSERT INTO public.users (id, email, role, created_at, last_login) VALUES
-('550e8400-e29b-41d4-a716-446655440001'::uuid, 'alice@seeker.com', 'seeker', NOW() - INTERVAL '30 days', NOW() - INTERVAL '2 days'),
-('550e8400-e29b-41d4-a716-446655440002'::uuid, 'bob@seeker.com', 'seeker', NOW() - INTERVAL '25 days', NOW() - INTERVAL '1 day'),
-('550e8400-e29b-41d4-a716-446655440003'::uuid, 'charlie@seeker.com', 'seeker', NOW() - INTERVAL '20 days', NOW()),
-('550e8400-e29b-41d4-a716-446655440004'::uuid, 'diana@employer.com', 'employer', NOW() - INTERVAL '60 days', NOW()),
-('550e8400-e29b-41d4-a716-446655440005'::uuid, 'evan@employer.com', 'employer', NOW() - INTERVAL '50 days', NOW()),
-('550e8400-e29b-41d4-a716-446655440006'::uuid, 'frank@admin.com', 'admin', NOW() - INTERVAL '100 days', NOW()),
-('550e8400-e29b-41d4-a716-446655440007'::uuid, 'grace@seeker.com', 'seeker', NOW() - INTERVAL '15 days', NOW()),
-('550e8400-e29b-41d4-a716-446655440008'::uuid, 'henry@seeker.com', 'seeker', NOW() - INTERVAL '10 days', NOW() - INTERVAL '5 days'),
-('550e8400-e29b-41d4-a716-446655440009'::uuid, 'isla@employer.com', 'employer', NOW() - INTERVAL '40 days', NOW()),
-('550e8400-e29b-41d4-a716-446655440010'::uuid, 'jack@seeker.com', 'seeker', NOW() - INTERVAL '5 days', NOW());
+('550e8400-e29b-41d4-a716-446655440001'::uuid, 'tanvir@seeker.com', 'seeker', NOW() - INTERVAL '30 days', NOW() - INTERVAL '2 days'),
+('550e8400-e29b-41d4-a716-446655440002'::uuid, 'sadia@seeker.com', 'seeker', NOW() - INTERVAL '25 days', NOW() - INTERVAL '1 day'),
+('550e8400-e29b-41d4-a716-446655440003'::uuid, 'rakib@seeker.com', 'seeker', NOW() - INTERVAL '20 days', NOW()),
+('550e8400-e29b-41d4-a716-446655440004'::uuid, 'nusrat@employer.com', 'employer', NOW() - INTERVAL '60 days', NOW()),
+('550e8400-e29b-41d4-a716-446655440005'::uuid, 'faysal@employer.com', 'employer', NOW() - INTERVAL '50 days', NOW()),
+('550e8400-e29b-41d4-a716-446655440006'::uuid, 'tukabbir@admin.com', 'admin', NOW() - INTERVAL '100 days', NOW()),
+('550e8400-e29b-41d4-a716-446655440007'::uuid, 'niloy@seeker.com', 'seeker', NOW() - INTERVAL '15 days', NOW()),
+('550e8400-e29b-41d4-a716-446655440008'::uuid, 'sakhawat@seeker.com', 'seeker', NOW() - INTERVAL '10 days', NOW() - INTERVAL '5 days'),
+('550e8400-e29b-41d4-a716-446655440009'::uuid, 'animesh@employer.com', 'employer', NOW() - INTERVAL '40 days', NOW()),
+('550e8400-e29b-41d4-a716-446655440010'::uuid, 'mohammad@seeker.com', 'seeker', NOW() - INTERVAL '5 days', NOW());
 ```
 
 **Output Snapshot:**
 ```
  id                                   | email               | role      | created_at              | last_login
 --------------------------------------|---------------------|-----------|-------------------------|---------------------
- 550e8400-e29b-41d4-a716-446655440001 | alice@seeker.com    | seeker    | 2026-06-01 12:00:00 UTC | 2026-06-29 12:00:00 UTC
- 550e8400-e29b-41d4-a716-446655440002 | bob@seeker.com      | seeker    | 2026-06-06 12:00:00 UTC | 2026-06-30 12:00:00 UTC
- 550e8400-e29b-41d4-a716-446655440003 | charlie@seeker.com  | seeker    | 2026-06-11 12:00:00 UTC | 2026-07-01 12:00:00 UTC
- 550e8400-e29b-41d4-a716-446655440004 | diana@employer.com  | employer  | 2026-05-02 12:00:00 UTC | 2026-07-01 12:00:00 UTC
- 550e8400-e29b-41d4-a716-446655440005 | evan@employer.com   | employer  | 2026-05-12 12:00:00 UTC | 2026-07-01 12:00:00 UTC
- 550e8400-e29b-41d4-a716-446655440006 | frank@admin.com     | admin     | 2026-03-23 12:00:00 UTC | 2026-07-01 12:00:00 UTC
- 550e8400-e29b-41d4-a716-446655440007 | grace@seeker.com    | seeker    | 2026-06-16 12:00:00 UTC | 2026-07-01 12:00:00 UTC
- 550e8400-e29b-41d4-a716-446655440008 | henry@seeker.com    | seeker    | 2026-06-21 12:00:00 UTC | 2026-06-26 12:00:00 UTC
- 550e8400-e29b-41d4-a716-446655440009 | isla@employer.com   | employer  | 2026-05-22 12:00:00 UTC | 2026-07-01 12:00:00 UTC
- 550e8400-e29b-41d4-a716-446655440010 | jack@seeker.com     | seeker    | 2026-06-26 12:00:00 UTC | 2026-07-01 12:00:00 UTC
+ 550e8400-e29b-41d4-a716-446655440001 | tanvir@seeker.com    | seeker    | 2026-06-01 12:00:00 UTC | 2026-06-29 12:00:00 UTC
+ 550e8400-e29b-41d4-a716-446655440002 | sadia@seeker.com      | seeker    | 2026-06-06 12:00:00 UTC | 2026-06-30 12:00:00 UTC
+ 550e8400-e29b-41d4-a716-446655440003 | rakib@seeker.com  | seeker    | 2026-06-11 12:00:00 UTC | 2026-07-01 12:00:00 UTC
+ 550e8400-e29b-41d4-a716-446655440004 | nusrat@employer.com  | employer  | 2026-05-02 12:00:00 UTC | 2026-07-01 12:00:00 UTC
+ 550e8400-e29b-41d4-a716-446655440005 | faysal@employer.com   | employer  | 2026-05-12 12:00:00 UTC | 2026-07-01 12:00:00 UTC
+ 550e8400-e29b-41d4-a716-446655440006 | tukabbir@admin.com     | admin     | 2026-03-23 12:00:00 UTC | 2026-07-01 12:00:00 UTC
+ 550e8400-e29b-41d4-a716-446655440007 | niloy@seeker.com    | seeker    | 2026-06-16 12:00:00 UTC | 2026-07-01 12:00:00 UTC
+ 550e8400-e29b-41d4-a716-446655440008 | sakhawat@seeker.com    | seeker    | 2026-06-21 12:00:00 UTC | 2026-06-26 12:00:00 UTC
+ 550e8400-e29b-41d4-a716-446655440009 | animesh@employer.com   | employer  | 2026-05-22 12:00:00 UTC | 2026-07-01 12:00:00 UTC
+ 550e8400-e29b-41d4-a716-446655440010 | mohammad@seeker.com     | seeker    | 2026-06-26 12:00:00 UTC | 2026-07-01 12:00:00 UTC
 ```
 
 #### Sample Data 2: Companies
 ```sql
 INSERT INTO public.companies (id, name, industry, description, website_url, logo_url, founded_year) VALUES
-('660e8400-e29b-41d4-a716-446655440001'::uuid, 'TechCorp Industries', 'Technology', 'Leading software development company', 'https://techcorp.com', 'https://logo.techcorp.com', 2010),
-('660e8400-e29b-41d4-a716-446655440002'::uuid, 'InnovateLabs', 'Software/AI', 'AI and machine learning solutions', 'https://innovatelabs.com', 'https://logo.innovatelabs.com', 2015),
-('660e8400-e29b-41d4-a716-446655440003'::uuid, 'DesignStudio', 'Design/Creative', 'Digital design and UX agency', 'https://designstudio.com', 'https://logo.designstudio.com', 2012),
-('660e8400-e29b-41d4-a716-446655440004'::uuid, 'DataViz Corp', 'Data Analytics', 'Business intelligence solutions', 'https://dataviz.com', 'https://logo.dataviz.com', 2018),
-('660e8400-e29b-41d4-a716-446655440005'::uuid, 'CloudStack', 'Cloud Services', 'Cloud infrastructure provider', 'https://cloudstack.com', 'https://logo.cloudstack.com', 2008);
+('660e8400-e29b-41d4-a716-446655440001'::uuid, 'Pathao', 'Technology', 'Leading software development company', 'https://pathao.com', 'https://logo.pathao.com', 2010),
+('660e8400-e29b-41d4-a716-446655440002'::uuid, 'bKash', 'Software/AI', 'AI and machine learning solutions', 'https://bkash.com', 'https://logo.bkash.com', 2015),
+('660e8400-e29b-41d4-a716-446655440003'::uuid, 'Brain Station 23', 'Design/Creative', 'Digital design and UX agency', 'https://brainstation23.com', 'https://logo.brainstation23.com', 2012),
+('660e8400-e29b-41d4-a716-446655440004'::uuid, 'TigerIT', 'Data Analytics', 'Business intelligence solutions', 'https://tigerit.com', 'https://logo.tigerit.com', 2018),
+('660e8400-e29b-41d4-a716-446655440005'::uuid, 'Enosis Solutions', 'Cloud Services', 'Cloud infrastructure provider', 'https://enosis.com', 'https://logo.enosis.com', 2008);
 ```
 
 **Output Snapshot:**
 ```
  id                                   | name               | industry          | description                      | website_url            | founded_year
 --------------------------------------|--------------------|--------------------|----------------------------------|------------------------|-----------
- 660e8400-e29b-41d4-a716-446655440001 | TechCorp Industries| Technology         | Leading software development ... | https://techcorp.com   | 2010
- 660e8400-e29b-41d4-a716-446655440002 | InnovateLabs       | Software/AI        | AI and machine learning sol ...  | https://innovatelabs.com| 2015
- 660e8400-e29b-41d4-a716-446655440003 | DesignStudio       | Design/Creative    | Digital design and UX agency ...| https://designstudio.com| 2012
- 660e8400-e29b-41d4-a716-446655440004 | DataViz Corp       | Data Analytics     | Business intelligence solutions  | https://dataviz.com    | 2018
- 660e8400-e29b-41d4-a716-446655440005 | CloudStack         | Cloud Services     | Cloud infrastructure provider    | https://cloudstack.com | 2008
+ 660e8400-e29b-41d4-a716-446655440001 | Pathao| Technology         | Leading software development ... | https://pathao.com   | 2010
+ 660e8400-e29b-41d4-a716-446655440002 | bKash       | Software/AI        | AI and machine learning sol ...  | https://bkash.com| 2015
+ 660e8400-e29b-41d4-a716-446655440003 | Brain Station 23       | Design/Creative    | Digital design and UX agency ...| https://brainstation23.com| 2012
+ 660e8400-e29b-41d4-a716-446655440004 | TigerIT       | Data Analytics     | Business intelligence solutions  | https://tigerit.com    | 2018
+ 660e8400-e29b-41d4-a716-446655440005 | Enosis Solutions         | Cloud Services     | Cloud infrastructure provider    | https://enosis.com | 2008
 ```
 
 #### Sample Data 3: Skills (Master Dictionary)
@@ -565,53 +566,53 @@ INSERT INTO public.skills (id, name, category) VALUES
 #### Sample Data 4: Seeker Profiles
 ```sql
 INSERT INTO public.seeker_profiles (user_id, first_name, last_name, headline, bio, location, resume_url, github_url, avatar_url, created_at, updated_at) VALUES
-('550e8400-e29b-41d4-a716-446655440001'::uuid, 'Alice', 'Johnson', 'Full Stack Developer', 'Passionate about web development and clean code', 'San Francisco, CA', 'https://resume.alice.pdf', 'https://github.com/alice', 'https://avatar.alice.jpg', NOW() - INTERVAL '30 days', NOW()),
-('550e8400-e29b-41d4-a716-446655440002'::uuid, 'Bob', 'Smith', 'Junior Backend Engineer', 'Learning Node.js and PostgreSQL', 'New York, NY', 'https://resume.bob.pdf', 'https://github.com/bob', 'https://avatar.bob.jpg', NOW() - INTERVAL '25 days', NOW()),
-('550e8400-e29b-41d4-a716-446655440003'::uuid, 'Charlie', 'Brown', 'Data Scientist', 'ML specialist with 5 years experience', 'Austin, TX', 'https://resume.charlie.pdf', 'https://github.com/charlie', 'https://avatar.charlie.jpg', NOW() - INTERVAL '20 days', NOW()),
-('550e8400-e29b-41d4-a716-446655440007'::uuid, 'Grace', 'Lee', 'UI/UX Designer', 'Figma and design systems expert', 'Seattle, WA', 'https://resume.grace.pdf', NULL, 'https://avatar.grace.jpg', NOW() - INTERVAL '15 days', NOW()),
-('550e8400-e29b-41d4-a716-446655440008'::uuid, 'Henry', 'Wilson', 'DevOps Engineer', 'Docker and Kubernetes specialist', 'Boston, MA', 'https://resume.henry.pdf', 'https://github.com/henry', 'https://avatar.henry.jpg', NOW() - INTERVAL '10 days', NOW()),
-('550e8400-e29b-41d4-a716-446655440010'::uuid, 'Jack', 'Davis', 'Full Stack Developer', 'React and Python developer', 'Denver, CO', 'https://resume.jack.pdf', 'https://github.com/jack', 'https://avatar.jack.jpg', NOW() - INTERVAL '5 days', NOW());
+('550e8400-e29b-41d4-a716-446655440001'::uuid, 'Tanvir', 'Rahman', 'Full Stack Developer', 'Passionate about web development and clean code', 'Dhaka, Bangladesh', 'https://resume.tanvir.pdf', 'https://github.com/tanvir', 'https://avatar.tanvir.jpg', NOW() - INTERVAL '30 days', NOW()),
+('550e8400-e29b-41d4-a716-446655440002'::uuid, 'Sadia', 'Begum', 'Junior Backend Engineer', 'Learning Node.js and PostgreSQL', 'Banani, Dhaka', 'https://resume.sadia.pdf', 'https://github.com/sadia', 'https://avatar.sadia.jpg', NOW() - INTERVAL '25 days', NOW()),
+('550e8400-e29b-41d4-a716-446655440003'::uuid, 'Rakib', 'Ghosh', 'Data Scientist', 'ML specialist with 5 years experience', 'Chattogram, Bangladesh', 'https://resume.rakib.pdf', 'https://github.com/rakib', 'https://avatar.rakib.jpg', NOW() - INTERVAL '20 days', NOW()),
+('550e8400-e29b-41d4-a716-446655440007'::uuid, 'Niloy', 'Mukherjee', 'UI/UX Designer', 'Figma and design systems expert', 'Gulshan, Dhaka', 'https://resume.niloy.pdf', NULL, 'https://avatar.niloy.jpg', NOW() - INTERVAL '15 days', NOW()),
+('550e8400-e29b-41d4-a716-446655440008'::uuid, 'Sakhawat', 'Hosen', 'DevOps Engineer', 'Docker and Kubernetes specialist', 'Sylhet, Bangladesh', 'https://resume.sakhawat.pdf', 'https://github.com/sakhawat', 'https://avatar.sakhawat.jpg', NOW() - INTERVAL '10 days', NOW()),
+('550e8400-e29b-41d4-a716-446655440010'::uuid, 'Mohammad', 'Sakhawat', 'Full Stack Developer', 'React and Python developer', 'Mirpur, Dhaka', 'https://resume.mohammad.pdf', 'https://github.com/mohammad', 'https://avatar.mohammad.jpg', NOW() - INTERVAL '5 days', NOW());
 ```
 
 **Output Snapshot:**
 ```
  user_id                              | first_name | last_name | headline                | location           | years_experience
 --------------------------------------|------------|-----------|-------------------------|--------------------|---------
- 550e8400-e29b-41d4-a716-446655440001 | Alice      | Johnson   | Full Stack Developer    | San Francisco, CA  | 4
- 550e8400-e29b-41d4-a716-446655440002 | Bob        | Smith     | Junior Backend Engineer | New York, NY       | 1
- 550e8400-e29b-41d4-a716-446655440003 | Charlie    | Brown     | Data Scientist          | Austin, TX         | 5
- 550e8400-e29b-41d4-a716-446655440007 | Grace      | Lee       | UI/UX Designer          | Seattle, WA        | 3
- 550e8400-e29b-41d4-a716-446655440008 | Henry      | Wilson    | DevOps Engineer         | Boston, MA         | 3
- 550e8400-e29b-41d4-a716-446655440010 | Jack       | Davis     | Full Stack Developer    | Denver, CO         | 2
+ 550e8400-e29b-41d4-a716-446655440001 | Tanvir      | Rahman   | Full Stack Developer    | Dhaka, Bangladesh  | 4
+ 550e8400-e29b-41d4-a716-446655440002 | Sadia        | Begum     | Junior Backend Engineer | Banani, Dhaka       | 1
+ 550e8400-e29b-41d4-a716-446655440003 | Rakib    | Ghosh     | Data Scientist          | Chattogram, Bangladesh         | 5
+ 550e8400-e29b-41d4-a716-446655440007 | Niloy      | Mukherjee       | UI/UX Designer          | Gulshan, Dhaka        | 3
+ 550e8400-e29b-41d4-a716-446655440008 | Sakhawat      | Hosen    | DevOps Engineer         | Sylhet, Bangladesh         | 3
+ 550e8400-e29b-41d4-a716-446655440010 | Mohammad       | Sakhawat     | Full Stack Developer    | Mirpur, Dhaka         | 2
 ```
 
 #### Sample Data 5: Seeker Skills
 ```sql
 INSERT INTO public.seeker_skills (seeker_id, skill_id, years_of_experience, proficiency) VALUES
--- Alice (Full Stack)
+-- Tanvir (Full Stack)
 ('550e8400-e29b-41d4-a716-446655440001'::uuid, '770e8400-e29b-41d4-a716-446655440001'::uuid, 4, 'expert'),      -- JavaScript
 ('550e8400-e29b-41d4-a716-446655440001'::uuid, '770e8400-e29b-41d4-a716-446655440003'::uuid, 3.5, 'expert'),    -- React
 ('550e8400-e29b-41d4-a716-446655440001'::uuid, '770e8400-e29b-41d4-a716-446655440005'::uuid, 3, 'intermediate'), -- PostgreSQL
 
--- Bob (Junior Backend)
+-- Sadia (Junior Backend)
 ('550e8400-e29b-41d4-a716-446655440002'::uuid, '770e8400-e29b-41d4-a716-446655440002'::uuid, 1, 'intermediate'), -- TypeScript
 ('550e8400-e29b-41d4-a716-446655440002'::uuid, '770e8400-e29b-41d4-a716-446655440004'::uuid, 1.5, 'intermediate'),-- Python
 ('550e8400-e29b-41d4-a716-446655440002'::uuid, '770e8400-e29b-41d4-a716-446655440005'::uuid, 1, 'beginner'),     -- PostgreSQL
 
--- Charlie (Data Scientist)
+-- Rakib (Data Scientist)
 ('550e8400-e29b-41d4-a716-446655440003'::uuid, '770e8400-e29b-41d4-a716-446655440004'::uuid, 5, 'expert'),       -- Python
 ('550e8400-e29b-41d4-a716-446655440003'::uuid, '770e8400-e29b-41d4-a716-446655440008'::uuid, 4, 'expert'),       -- Machine Learning
 ('550e8400-e29b-41d4-a716-446655440003'::uuid, '770e8400-e29b-41d4-a716-446655440009'::uuid, 5, 'expert'),       -- Data Analysis
 
--- Grace (Designer)
+-- Niloy (Designer)
 ('550e8400-e29b-41d4-a716-446655440007'::uuid, '770e8400-e29b-41d4-a716-446655440010'::uuid, 3, 'expert'),       -- Figma
 ('550e8400-e29b-41d4-a716-446655440007'::uuid, '770e8400-e29b-41d4-a716-446655440011'::uuid, 3, 'expert'),       -- UI/UX Design
 
--- Henry (DevOps)
+-- Sakhawat (DevOps)
 ('550e8400-e29b-41d4-a716-446655440008'::uuid, '770e8400-e29b-41d4-a716-446655440006'::uuid, 3, 'expert'),       -- Docker
 ('550e8400-e29b-41d4-a716-446655440008'::uuid, '770e8400-e29b-41d4-a716-446655440007'::uuid, 2.5, 'expert'),     -- AWS
 
--- Jack (Full Stack)
+-- Mohammad (Full Stack)
 ('550e8400-e29b-41d4-a716-446655440010'::uuid, '770e8400-e29b-41d4-a716-446655440001'::uuid, 2, 'expert'),       -- JavaScript
 ('550e8400-e29b-41d4-a716-446655440010'::uuid, '770e8400-e29b-41d4-a716-446655440003'::uuid, 2, 'expert'),       -- React
 ('550e8400-e29b-41d4-a716-446655440010'::uuid, '770e8400-e29b-41d4-a716-446655440004'::uuid, 1, 'intermediate'); -- Python
@@ -642,24 +643,24 @@ INSERT INTO public.seeker_skills (seeker_id, skill_id, years_of_experience, prof
 #### Sample Data 6: Jobs
 ```sql
 INSERT INTO public.jobs (id, company_id, posted_by_user_id, title, description, location, salary_min, salary_max, job_type, status, created_at, updated_at) VALUES
-('880e8400-e29b-41d4-a716-446655440001'::uuid, '660e8400-e29b-41d4-a716-446655440001'::uuid, '550e8400-e29b-41d4-a716-446655440004'::uuid, 'Senior React Developer', 'Looking for experienced React developer', 'San Francisco, CA', 120000, 150000, 'full_time', 'open', NOW() - INTERVAL '15 days', NOW()),
+('880e8400-e29b-41d4-a716-446655440001'::uuid, '660e8400-e29b-41d4-a716-446655440001'::uuid, '550e8400-e29b-41d4-a716-446655440004'::uuid, 'Senior React Developer', 'Looking for experienced React developer', 'Dhaka, Bangladesh', 120000, 150000, 'full_time', 'open', NOW() - INTERVAL '15 days', NOW()),
 ('880e8400-e29b-41d4-a716-446655440002'::uuid, '660e8400-e29b-41d4-a716-446655440001'::uuid, '550e8400-e29b-41d4-a716-446655440004'::uuid, 'Backend Engineer', 'Node.js and PostgreSQL backend development', 'Remote', 100000, 130000, 'remote', 'open', NOW() - INTERVAL '10 days', NOW()),
-('880e8400-e29b-41d4-a716-446655440003'::uuid, '660e8400-e29b-41d4-a716-446655440002'::uuid, '550e8400-e29b-41d4-a716-446655440005'::uuid, 'Machine Learning Engineer', 'Build ML models for data processing', 'Boston, MA', 130000, 160000, 'full_time', 'open', NOW() - INTERVAL '8 days', NOW()),
-('880e8400-e29b-41d4-a716-446655440004'::uuid, '660e8400-e29b-41d4-a716-446655440003'::uuid, '550e8400-e29b-41d4-a716-446655440009'::uuid, 'UI/UX Designer', 'Design modern user interfaces', 'Seattle, WA', 90000, 120000, 'full_time', 'open', NOW() - INTERVAL '5 days', NOW()),
-('880e8400-e29b-41d4-a716-446655440005'::uuid, '660e8400-e29b-41d4-a716-446655440005'::uuid, '550e8400-e29b-41d4-a716-446655440005'::uuid, 'DevOps Engineer', 'Infrastructure and deployment', 'New York, NY', 110000, 140000, 'full_time', 'open', NOW() - INTERVAL '3 days', NOW()),
-('880e8400-e29b-41d4-a716-446655440006'::uuid, '660e8400-e29b-41d4-a716-446655440001'::uuid, '550e8400-e29b-41d4-a716-446655440004'::uuid, 'Python Developer', 'Backend development with Python', 'Austin, TX', 85000, 110000, 'full_time', 'closed', NOW() - INTERVAL '30 days', NOW());
+('880e8400-e29b-41d4-a716-446655440003'::uuid, '660e8400-e29b-41d4-a716-446655440002'::uuid, '550e8400-e29b-41d4-a716-446655440005'::uuid, 'Machine Learning Engineer', 'Build ML models for data processing', 'Sylhet, Bangladesh', 130000, 160000, 'full_time', 'open', NOW() - INTERVAL '8 days', NOW()),
+('880e8400-e29b-41d4-a716-446655440004'::uuid, '660e8400-e29b-41d4-a716-446655440003'::uuid, '550e8400-e29b-41d4-a716-446655440009'::uuid, 'UI/UX Designer', 'Design modern user interfaces', 'Gulshan, Dhaka', 90000, 120000, 'full_time', 'open', NOW() - INTERVAL '5 days', NOW()),
+('880e8400-e29b-41d4-a716-446655440005'::uuid, '660e8400-e29b-41d4-a716-446655440005'::uuid, '550e8400-e29b-41d4-a716-446655440005'::uuid, 'DevOps Engineer', 'Infrastructure and deployment', 'Banani, Dhaka', 110000, 140000, 'full_time', 'open', NOW() - INTERVAL '3 days', NOW()),
+('880e8400-e29b-41d4-a716-446655440006'::uuid, '660e8400-e29b-41d4-a716-446655440001'::uuid, '550e8400-e29b-41d4-a716-446655440004'::uuid, 'Python Developer', 'Backend development with Python', 'Chattogram, Bangladesh', 85000, 110000, 'full_time', 'closed', NOW() - INTERVAL '30 days', NOW());
 ```
 
 **Output Snapshot:**
 ```
  id                                   | company_name        | title                  | location           | salary_min | salary_max | job_type  | status
 --------------------------------------|---------------------|------------------------|--------------------|------------|------------|----------|--------
- 880e8400-e29b-41d4-a716-446655440001 | TechCorp Industries | Senior React Developer | San Francisco, CA  | 120000     | 150000     | full_time | open
- 880e8400-e29b-41d4-a716-446655440002 | TechCorp Industries | Backend Engineer       | Remote             | 100000     | 130000     | remote    | open
- 880e8400-e29b-41d4-a716-446655440003 | InnovateLabs        | Machine Learning Eng   | Boston, MA         | 130000     | 160000     | full_time | open
- 880e8400-e29b-41d4-a716-446655440004 | DesignStudio        | UI/UX Designer         | Seattle, WA        | 90000      | 120000     | full_time | open
- 880e8400-e29b-41d4-a716-446655440005 | CloudStack          | DevOps Engineer        | New York, NY       | 110000     | 140000     | full_time | open
- 880e8400-e29b-41d4-a716-446655440006 | TechCorp Industries | Python Developer       | Austin, TX         | 85000      | 110000     | full_time | closed
+ 880e8400-e29b-41d4-a716-446655440001 | Pathao | Senior React Developer | Dhaka, Bangladesh  | 120000     | 150000     | full_time | open
+ 880e8400-e29b-41d4-a716-446655440002 | Pathao | Backend Engineer       | Remote             | 100000     | 130000     | remote    | open
+ 880e8400-e29b-41d4-a716-446655440003 | bKash        | Machine Learning Eng   | Sylhet, Bangladesh         | 130000     | 160000     | full_time | open
+ 880e8400-e29b-41d4-a716-446655440004 | Brain Station 23        | UI/UX Designer         | Gulshan, Dhaka        | 90000      | 120000     | full_time | open
+ 880e8400-e29b-41d4-a716-446655440005 | Enosis Solutions          | DevOps Engineer        | Banani, Dhaka       | 110000     | 140000     | full_time | open
+ 880e8400-e29b-41d4-a716-446655440006 | Pathao | Python Developer       | Chattogram, Bangladesh         | 85000      | 110000     | full_time | closed
 ```
 
 #### Sample Data 7: Job Skills
@@ -731,14 +732,14 @@ INSERT INTO public.applications (id, job_id, seeker_id, cover_letter, status, ap
 ```
  id                                   | job_title                  | seeker_name | status      | applied_at
 --------------------------------------|---------------------------|-------------|-------------|-------------------
- 990e8400-e29b-41d4-a716-446655440001 | Senior React Developer     | Alice       | interviewing| 2026-06-21
- 990e8400-e29b-41d4-a716-446655440002 | Senior React Developer     | Jack        | reviewing   | 2026-06-23
- 990e8400-e29b-41d4-a716-446655440003 | Backend Engineer           | Bob         | pending     | 2026-06-24
- 990e8400-e29b-41d4-a716-446655440004 | Machine Learning Engineer  | Charlie     | offered     | 2026-06-25
- 990e8400-e29b-41d4-a716-446655440005 | UI/UX Designer             | Grace       | reviewing   | 2026-06-27
- 990e8400-e29b-41d4-a716-446655440006 | DevOps Engineer            | Henry       | interviewing| 2026-06-29
- 990e8400-e29b-41d4-a716-446655440007 | Backend Engineer           | Jack        | pending     | 2026-06-30
- 990e8400-e29b-41d4-a716-446655440008 | Senior React Developer     | Charlie     | rejected    | 2026-06-26
+ 990e8400-e29b-41d4-a716-446655440001 | Senior React Developer     | Tanvir       | interviewing| 2026-06-21
+ 990e8400-e29b-41d4-a716-446655440002 | Senior React Developer     | Mohammad        | reviewing   | 2026-06-23
+ 990e8400-e29b-41d4-a716-446655440003 | Backend Engineer           | Sadia         | pending     | 2026-06-24
+ 990e8400-e29b-41d4-a716-446655440004 | Machine Learning Engineer  | Rakib     | offered     | 2026-06-25
+ 990e8400-e29b-41d4-a716-446655440005 | UI/UX Designer             | Niloy       | reviewing   | 2026-06-27
+ 990e8400-e29b-41d4-a716-446655440006 | DevOps Engineer            | Sakhawat       | interviewing| 2026-06-29
+ 990e8400-e29b-41d4-a716-446655440007 | Backend Engineer           | Mohammad        | pending     | 2026-06-30
+ 990e8400-e29b-41d4-a716-446655440008 | Senior React Developer     | Rakib     | rejected    | 2026-06-26
 ```
 
 #### Sample Data 9: Interviews
@@ -796,11 +797,11 @@ ORDER BY a.applied_at DESC;
 ```
  application_id | job_title                | seeker_name     | status       | location           | applied_at
 ----------------|--------------------------|-----------------|--------------|--------------------|-----------
- 990e...001     | Senior React Developer   | Alice Johnson   | interviewing | San Francisco, CA  | 2026-06-21
- 990e...002     | Senior React Developer   | Jack Davis      | reviewing    | San Francisco, CA  | 2026-06-23
- 990e...003     | Backend Engineer         | Bob Smith       | pending      | Remote             | 2026-06-24
- 990e...004     | Machine Learning Engine  | Charlie Brown   | offered      | Boston, MA         | 2026-06-25
- 990e...005     | UI/UX Designer           | Grace Lee       | reviewing    | Seattle, WA        | 2026-06-27
+ 990e...001     | Senior React Developer   | Tanvir Rahman   | interviewing | Dhaka, Bangladesh  | 2026-06-21
+ 990e...002     | Senior React Developer   | Mohammad Sakhawat      | reviewing    | Dhaka, Bangladesh  | 2026-06-23
+ 990e...003     | Backend Engineer         | Sadia Begum       | pending      | Remote             | 2026-06-24
+ 990e...004     | Machine Learning Engine  | Rakib Ghosh   | offered      | Sylhet, Bangladesh         | 2026-06-25
+ 990e...005     | UI/UX Designer           | Niloy Mukherjee       | reviewing    | Gulshan, Dhaka        | 2026-06-27
 ```
 
 #### Query 1.2: Cross Product (Cartesian Product)
@@ -829,16 +830,16 @@ LIMIT 10;
 ```
  company_name        | skill_name           | category
 ---------------------|----------------------|------------------
- CloudStack          | AWS                  | Engineering
- CloudStack          | Data Analysis        | Data & AI
- CloudStack          | Docker               | Engineering
- CloudStack          | Java                 | Engineering
- CloudStack          | JavaScript           | Engineering
- CloudStack          | Machine Learning     | Data & AI
- CloudStack          | Python               | Engineering
- CloudStack          | PostgreSQL           | Engineering
- DataViz Corp        | AWS                  | Engineering
- DataViz Corp        | Data Analysis        | Data & AI
+ Enosis Solutions          | AWS                  | Engineering
+ Enosis Solutions          | Data Analysis        | Data & AI
+ Enosis Solutions          | Docker               | Engineering
+ Enosis Solutions          | Java                 | Engineering
+ Enosis Solutions          | JavaScript           | Engineering
+ Enosis Solutions          | Machine Learning     | Data & AI
+ Enosis Solutions          | Python               | Engineering
+ Enosis Solutions          | PostgreSQL           | Engineering
+ TigerIT        | AWS                  | Engineering
+ TigerIT        | Data Analysis        | Data & AI
 ```
 
 #### Query 1.3: Left Outer Join
@@ -872,12 +873,12 @@ ORDER BY application_count DESC;
 ```
  id         | title                    | company_name        | status | application_count | total_applications
 ------------|--------------------------|---------------------|--------|-------------------|------------------
- 880e...001 | Senior React Developer   | TechCorp Industries | open   | 3                 | 3
- 880e...002 | Backend Engineer         | TechCorp Industries | open   | 2                 | 2
- 880e...003 | Machine Learning Engineer| InnovateLabs        | open   | 1                 | 1
- 880e...005 | DevOps Engineer          | CloudStack          | open   | 1                 | 1
- 880e...004 | UI/UX Designer           | DesignStudio        | open   | 1                 | 1
- 880e...006 | Python Developer         | TechCorp Industries | closed | 0                 | 0
+ 880e...001 | Senior React Developer   | Pathao | open   | 3                 | 3
+ 880e...002 | Backend Engineer         | Pathao | open   | 2                 | 2
+ 880e...003 | Machine Learning Engineer| bKash        | open   | 1                 | 1
+ 880e...005 | DevOps Engineer          | Enosis Solutions          | open   | 1                 | 1
+ 880e...004 | UI/UX Designer           | Brain Station 23        | open   | 1                 | 1
+ 880e...006 | Python Developer         | Pathao | closed | 0                 | 0
 ```
 
 #### Query 1.4: Join with USING Clause
@@ -918,17 +919,17 @@ ORDER BY sp.first_name, ss.years_of_experience DESC;
 ```
  seeker_name     | skill_name           | category       | years_of_experience | proficiency
 -----------------|----------------------|-----------------|--------------------|-----------
- Alice Johnson   | React                | Engineering    | 3.5                | expert
- Alice Johnson   | JavaScript           | Engineering    | 4.0                | expert
- Charlie Brown   | Data Analysis        | Data & AI      | 5.0                | expert
- Charlie Brown   | Machine Learning     | Data & AI      | 4.0                | expert
- Charlie Brown   | Python               | Engineering    | 5.0                | expert
- Grace Lee       | Figma                | Design         | 3.0                | expert
- Grace Lee       | UI/UX Design         | Design         | 3.0                | expert
- Henry Wilson    | Docker               | Engineering    | 3.0                | expert
- Henry Wilson    | AWS                  | Engineering    | 2.5                | expert
- Jack Davis      | JavaScript           | Engineering    | 2.0                | expert
- Jack Davis      | React                | Engineering    | 2.0                | expert
+ Tanvir Rahman   | React                | Engineering    | 3.5                | expert
+ Tanvir Rahman   | JavaScript           | Engineering    | 4.0                | expert
+ Rakib Ghosh   | Data Analysis        | Data & AI      | 5.0                | expert
+ Rakib Ghosh   | Machine Learning     | Data & AI      | 4.0                | expert
+ Rakib Ghosh   | Python               | Engineering    | 5.0                | expert
+ Niloy Mukherjee       | Figma                | Design         | 3.0                | expert
+ Niloy Mukherjee       | UI/UX Design         | Design         | 3.0                | expert
+ Sakhawat Hosen    | Docker               | Engineering    | 3.0                | expert
+ Sakhawat Hosen    | AWS                  | Engineering    | 2.5                | expert
+ Mohammad Sakhawat      | JavaScript           | Engineering    | 2.0                | expert
+ Mohammad Sakhawat      | React                | Engineering    | 2.0                | expert
 ```
 
 #### Query 1.5: Right Outer Join
@@ -997,10 +998,10 @@ ORDER BY c.name;
 ```
  id         | name                | industry       | founded_year
 ------------|---------------------|----------------|-----------
- 660e...001 | TechCorp Industries | Technology     | 2010
- 660e...002 | InnovateLabs        | Software/AI    | 2015
- 660e...003 | DesignStudio        | Design/Creativ | 2012
- 660e...005 | CloudStack          | Cloud Services | 2008
+ 660e...001 | Pathao | Technology     | 2010
+ 660e...002 | bKash        | Software/AI    | 2015
+ 660e...003 | Brain Station 23        | Design/Creativ | 2012
+ 660e...005 | Enosis Solutions          | Cloud Services | 2008
 ```
 
 #### Query 2.2: Subquery with NOT EXISTS Clause
@@ -1030,8 +1031,8 @@ ORDER BY total_applications DESC;
 ```
  seeker_name     | total_applications
 -----------------|------------------
- Alice Johnson   | 1
- Grace Lee       | 1
+ Tanvir Rahman   | 1
+ Niloy Mukherjee       | 1
 ```
 
 #### Query 2.3: Subquery with ANY Clause
@@ -1059,10 +1060,10 @@ ORDER BY j.salary_min DESC;
 ```
  title                    | company_name        | salary_min | salary_max
 --------------------------|---------------------|------------|----------
- Machine Learning Engineer| InnovateLabs        | 130000     | 160000
- Senior React Developer   | TechCorp Industries | 120000     | 150000
- DevOps Engineer          | CloudStack          | 110000     | 140000
- Backend Engineer         | TechCorp Industries | 100000     | 130000
+ Machine Learning Engineer| bKash        | 130000     | 160000
+ Senior React Developer   | Pathao | 120000     | 150000
+ DevOps Engineer          | Enosis Solutions          | 110000     | 140000
+ Backend Engineer         | Pathao | 100000     | 130000
 ```
 
 #### Query 2.4: Subquery with ALL Clause
@@ -1091,8 +1092,8 @@ ORDER BY avg_experience DESC;
 ```
  seeker_name     | avg_experience
 -----------------|---------------
- Charlie Brown   | 4.67
- Alice Johnson   | 3.5
+ Rakib Ghosh   | 4.67
+ Tanvir Rahman   | 3.5
 ```
 
 #### Query 2.5: Subquery with SOME Clause
@@ -1118,8 +1119,8 @@ ORDER BY c.name;
 ```
  company_name        | industry
 ---------------------|------------------
- InnovateLabs        | Software/AI
- TechCorp Industries | Technology
+ bKash        | Software/AI
+ Pathao | Technology
 ```
 
 #### Query 2.6: Subquery with UNIQUE Clause
@@ -1213,9 +1214,9 @@ ORDER BY j.salary_min DESC;
 ```
  application_id | title                    | seeker_name     | status       | salary_min | salary_max
 ----------------|--------------------------|-----------------|--------------|------------|----------
- 990e...004     | Machine Learning Engineer| Charlie Brown   | offered      | 130000     | 160000
- 990e...001     | Senior React Developer   | Alice Johnson   | interviewing | 120000     | 150000
- 990e...006     | DevOps Engineer          | Henry Wilson    | interviewing | 110000     | 140000
+ 990e...004     | Machine Learning Engineer| Rakib Ghosh   | offered      | 130000     | 160000
+ 990e...001     | Senior React Developer   | Tanvir Rahman   | interviewing | 120000     | 150000
+ 990e...006     | DevOps Engineer          | Sakhawat Hosen    | interviewing | 110000     | 140000
 ```
 
 #### Query 3.3: Subquery in SELECT Clause (Scalar Subquery)
@@ -1243,12 +1244,12 @@ ORDER BY profile_completion_percentage DESC;
 ```
  seeker_name      | profile_completion_percentage | skill_count | application_count
 ------------------|---------------------------------|------------|----------------
- Alice Johnson   | 100                           | 3          | 1
- Bob Smith       | 100                           | 3          | 1
- Charlie Brown   | 100                           | 3          | 2
- Grace Lee       | 80                            | 2          | 1
- Henry Wilson    | 100                           | 2          | 1
- Jack Davis      | 100                           | 3          | 2
+ Tanvir Rahman   | 100                           | 3          | 1
+ Sadia Begum       | 100                           | 3          | 1
+ Rakib Ghosh   | 100                           | 3          | 2
+ Niloy Mukherjee       | 80                            | 2          | 1
+ Sakhawat Hosen    | 100                           | 2          | 1
+ Mohammad Sakhawat      | 100                           | 3          | 2
 ```
 
 ### Query Category 4: ORDER BY, GROUP BY, HAVING Clauses
@@ -1309,14 +1310,14 @@ ORDER BY status_priority ASC, a.applied_at DESC;
 ```
  application_id | job_title                 | seeker_name     | status       | applied_at | status_priority
 ----|-----|-----|---|-------|---
- 990e...004 | Machine Learning Engineer  | Charlie Brown   | offered      | 2026-06-25 | 1
- 990e...001 | Senior React Developer     | Alice Johnson   | interviewing | 2026-06-21 | 2
- 990e...006 | DevOps Engineer            | Henry Wilson    | interviewing | 2026-06-29 | 2
- 990e...002 | Senior React Developer     | Jack Davis      | reviewing    | 2026-06-23 | 3
- 990e...005 | UI/UX Designer             | Grace Lee       | reviewing    | 2026-06-27 | 3
- 990e...003 | Backend Engineer           | Bob Smith       | pending      | 2026-06-24 | 4
- 990e...007 | Backend Engineer           | Jack Davis      | pending      | 2026-06-30 | 4
- 990e...008 | Senior React Developer     | Charlie Brown   | rejected     | 2026-06-26 | 5
+ 990e...004 | Machine Learning Engineer  | Rakib Ghosh   | offered      | 2026-06-25 | 1
+ 990e...001 | Senior React Developer     | Tanvir Rahman   | interviewing | 2026-06-21 | 2
+ 990e...006 | DevOps Engineer            | Sakhawat Hosen    | interviewing | 2026-06-29 | 2
+ 990e...002 | Senior React Developer     | Mohammad Sakhawat      | reviewing    | 2026-06-23 | 3
+ 990e...005 | UI/UX Designer             | Niloy Mukherjee       | reviewing    | 2026-06-27 | 3
+ 990e...003 | Backend Engineer           | Sadia Begum       | pending      | 2026-06-24 | 4
+ 990e...007 | Backend Engineer           | Mohammad Sakhawat      | pending      | 2026-06-30 | 4
+ 990e...008 | Senior React Developer     | Rakib Ghosh   | rejected     | 2026-06-26 | 5
 ```
 
 ### Query Category 5: WITH Clause (Common Table Expressions)
@@ -1355,10 +1356,10 @@ ORDER BY open_jobs DESC;
 ```
  company_name        | open_jobs | total_jobs | open_percentage
 ---------------------|-----------|------------|--------
- TechCorp Industries | 2         | 3          | 66.7
- InnovateLabs        | 1         | 1          | 100.0
- DesignStudio        | 1         | 1          | 100.0
- CloudStack          | 1         | 1          | 100.0
+ Pathao | 2         | 3          | 66.7
+ bKash        | 1         | 1          | 100.0
+ Brain Station 23        | 1         | 1          | 100.0
+ Enosis Solutions          | 1         | 1          | 100.0
 ```
 
 #### Query 5.2: Recursive CTE or Multiple CTEs
@@ -1410,13 +1411,13 @@ LIMIT 10;
 ```
  seeker_name     | job_title                  | seeker_skills | required_skills | match_percentage
 -----------------|----------------------------|---------------|----------------|---------
- Alice Johnson   | Senior React Developer     | 3             | 2              | 100.0
- Jack Davis      | Senior React Developer     | 3             | 2              | 100.0
- Bob Smith       | Backend Engineer           | 3             | 2              | 66.7
- Henry Wilson    | DevOps Engineer            | 2             | 2              | 100.0
- Grace Lee       | UI/UX Designer             | 2             | 2              | 100.0
- Charlie Brown   | Machine Learning Engineer  | 3             | 3              | 100.0
- Alice Johnson   | Backend Engineer           | 3             | 2              | 50.0
+ Tanvir Rahman   | Senior React Developer     | 3             | 2              | 100.0
+ Mohammad Sakhawat      | Senior React Developer     | 3             | 2              | 100.0
+ Sadia Begum       | Backend Engineer           | 3             | 2              | 66.7
+ Sakhawat Hosen    | DevOps Engineer            | 2             | 2              | 100.0
+ Niloy Mukherjee       | UI/UX Designer             | 2             | 2              | 100.0
+ Rakib Ghosh   | Machine Learning Engineer  | 3             | 3              | 100.0
+ Tanvir Rahman   | Backend Engineer           | 3             | 2              | 50.0
 ```
 
 ### Query Category 6: String Manipulation & Set Operations
@@ -1446,12 +1447,12 @@ ORDER BY sp.first_name;
 ```
  formal_name      | generated_email           | headline                 | bio_preview                          | resume_url_length | state_from_location
 ------------------|-|-----|-----|---|---|
- ALICE JOHNSON   | alice.johnson@seekers... | Full Stack Developer    | Passionate about web development ... | 20                | CA
- BOB SMITH       | bob.smith@seekers...    | Junior Backend Engineer | Learning Node.js and PostgreSQL      | 18                | NY
- CHARLIE BROWN   | charlie.brown@seekers...| Data Scientist          | ML specialist with 5 years exper ... | 22                | TX
- GRACE LEE       | grace.lee@seekers...   | Ui/Ux Designer          | NULL                                 | 0                 | WA
- HENRY WILSON    | henry.wilson@seekers...| Devops Engineer         | Docker and Kubernetes specialist     | 21                | MA
- JACK DAVIS      | jack.davis@seekers...  | Full Stack Developer    | React and Python developer           | 19                | CO
+ TANVIR RAHMAN   | tanvir.rahman@seekers... | Full Stack Developer    | Passionate about web development ... | 20                | BD
+ SADIA BEGUM       | sadia.begum@seekers...    | Junior Backend Engineer | Learning Node.js and PostgreSQL      | 18                | BD
+ RAKIB GHOSH   | rakib.ghosh@seekers...| Data Scientist          | ML specialist with 5 years exper ... | 22                | BD
+ NILOY MUKHERJEE       | niloy.mukherjee@seekers...   | Ui/Ux Designer          | NULL                                 | 0                 | BD
+ SAKHAWAT HOSEN    | sakhawat.hosen@seekers...| Devops Engineer         | Docker and Kubernetes specialist     | 21                | BD
+ MOHAMMAD SAKHAWAT      | mohammad.sakhawat@seekers...  | Full Stack Developer    | React and Python developer           | 19                | BD
 ```
 
 #### Query 6.2: Set Operations - UNION
@@ -1483,12 +1484,12 @@ ORDER BY last_login DESC;
 ```
  user_id                              | email                | role      | activity_status   | last_login
 --------------------------------------|---------------------|-----------|-------------------|--
- 550e8400-e29b-41d4-a716-446655440001 | alice@seeker.com    | seeker    | Active Recently   | 2026-06-29
- 550e8400-e29b-41d4-a716-446655440003 | charlie@seeker.com  | seeker    | Active Recently   | 2026-07-01
- 550e8400-e29b-41d4-a716-446655440004 | diana@employer.com  | employer  | Active Recently   | 2026-07-01
- 550e8400-e29b-41d4-a716-446655440005 | evan@employer.com   | employer  | Active Recently   | 2026-07-01
- 550e8400-e29b-41d4-a716-446655440009 | isla@employer.com   | employer  | Active Recently   | 2026-07-01
- 550e8400-e29b-41d4-a716-446655440010 | jack@seeker.com     | seeker    | Active Recently   | 2026-07-01
+ 550e8400-e29b-41d4-a716-446655440001 | tanvir@seeker.com    | seeker    | Active Recently   | 2026-06-29
+ 550e8400-e29b-41d4-a716-446655440003 | rakib@seeker.com  | seeker    | Active Recently   | 2026-07-01
+ 550e8400-e29b-41d4-a716-446655440004 | nusrat@employer.com  | employer  | Active Recently   | 2026-07-01
+ 550e8400-e29b-41d4-a716-446655440005 | faysal@employer.com   | employer  | Active Recently   | 2026-07-01
+ 550e8400-e29b-41d4-a716-446655440009 | animesh@employer.com   | employer  | Active Recently   | 2026-07-01
+ 550e8400-e29b-41d4-a716-446655440010 | mohammad@seeker.com     | seeker    | Active Recently   | 2026-07-01
 ```
 
 #### Query 6.3: Set Operations - EXCEPT
@@ -1735,9 +1736,9 @@ LIMIT 5;
 ```
  job_id      | title                    | company_name        | salary_min | salary_max | application_count | active_interviews
 ---|----|-----|---|---|---|--
- 880e8400... | Senior React Developer   | TechCorp Industries | 120000     | 150000     | 3                 | 1
- 880e8400... | Backend Engineer         | TechCorp Industries | 100000     | 130000     | 2                 | 0
- 880e8400... | Machine Learning Engine  | InnovateLabs        | 130000     | 160000     | 1                 | 0
+ 880e8400... | Senior React Developer   | Pathao | 120000     | 150000     | 3                 | 1
+ 880e8400... | Backend Engineer         | Pathao | 100000     | 130000     | 2                 | 0
+ 880e8400... | Machine Learning Engine  | bKash        | 130000     | 160000     | 1                 | 0
 ```
 
 ### View 2: Seeker Profile Completeness
@@ -1788,12 +1789,12 @@ ORDER BY completion_percentage DESC;
 ```
  full_name       | completion_percentage | skill_count | application_count
 -|--|--|--|
- Alice Johnson  | 100                   | 3           | 1
- Bob Smith      | 100                   | 3           | 1
- Charlie Brown  | 100                   | 3           | 2
- Jack Davis     | 100                   | 3           | 2
- Grace Lee      | 80                    | 2           | 1
- Henry Wilson   | 100                   | 2           | 1
+ Tanvir Rahman  | 100                   | 3           | 1
+ Sadia Begum      | 100                   | 3           | 1
+ Rakib Ghosh  | 100                   | 3           | 2
+ Mohammad Sakhawat     | 100                   | 3           | 2
+ Niloy Mukherjee      | 80                    | 2           | 1
+ Sakhawat Hosen   | 100                   | 2           | 1
 ```
 
 ### View 3: Skill Demand Index
@@ -2026,6 +2027,7 @@ This comprehensive JobPortal database system represents a production-ready relat
 ✓ **Market Intelligence** - Analyzes skill demand and salary trends  
 ✓ **Company Management** - Supports multi-company employer operations  
 ✓ **Data Privacy** - Enforces role-based access control via RLS  
+✓ **Bangladeshi Localization** - Fully customized with Bangladeshi seeker profiles, tech employers, educational institutions, and geographic locations  
 
 #### **Technical Excellence:**
 
@@ -2042,5 +2044,5 @@ This database system is production-ready and can handle millions of user records
 ### End of Report
 
 **Database Version:** 1.0  
-**Last Updated:** 2026-07-01  
+**Last Updated:** 2026-07-05 (Localized for Bangladesh)  
 **Status:** ✓ Ready for Production Deployment

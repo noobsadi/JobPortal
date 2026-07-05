@@ -3,7 +3,8 @@ Database System - Comprehensive Report</h1>
 <p><strong>Project:</strong> JobPortal - A comprehensive job matching
 platform<br />
 <strong>Database Platform:</strong> PostgreSQL (via Supabase)<br />
-<strong>Date:</strong> 2026-07-01<br />
+<strong>Date:</strong> 2026-07-05 (Updated with Bangladeshi
+Localization)<br />
 <strong>Author:</strong> Database Engineering Team</p>
 <hr />
 <h2 id="table-of-contents">Table of Contents</h2>
@@ -47,6 +48,11 @@ and feedback collection</li>
 for both seekers and employers</li>
 <li><strong>Multi-Company Support</strong>: Employers can manage
 multiple companies and candidates</li>
+<li><strong>Localized for Bangladesh</strong>: All database records,
+sample seeding data, seeker profiles, tech companies (e.g., Pathao,
+bKash, Brain Station 23), universities (e.g., BUET, Dhaka University),
+and locations (Dhaka, Chattogram, Sylhet) are tailored to authentic
+Bangladeshi identities and institutions.</li>
 </ul>
 <h3 id="system-architecture">System Architecture</h3>
 <p>The database employs a relational model with: - <strong>User
@@ -1059,45 +1065,45 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb15-1"><a href="#
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- For this demo, using sample UUIDs:</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> <span class="kw">public</span>.users (<span class="kw">id</span>, email, <span class="kw">role</span>, created_at, last_login) <span class="kw">VALUES</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440001&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;alice@seeker.com&#39;</span>, <span class="st">&#39;seeker&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;30 days&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;2 days&#39;</span>),</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440002&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;bob@seeker.com&#39;</span>, <span class="st">&#39;seeker&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;25 days&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;1 day&#39;</span>),</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440003&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;charlie@seeker.com&#39;</span>, <span class="st">&#39;seeker&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;20 days&#39;</span>, NOW()),</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440004&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;diana@employer.com&#39;</span>, <span class="st">&#39;employer&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;60 days&#39;</span>, NOW()),</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440005&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;evan@employer.com&#39;</span>, <span class="st">&#39;employer&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;50 days&#39;</span>, NOW()),</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440006&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;frank@admin.com&#39;</span>, <span class="st">&#39;admin&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;100 days&#39;</span>, NOW()),</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440007&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;grace@seeker.com&#39;</span>, <span class="st">&#39;seeker&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;15 days&#39;</span>, NOW()),</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440008&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;henry@seeker.com&#39;</span>, <span class="st">&#39;seeker&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;10 days&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;5 days&#39;</span>),</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440009&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;isla@employer.com&#39;</span>, <span class="st">&#39;employer&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;40 days&#39;</span>, NOW()),</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440010&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;jack@seeker.com&#39;</span>, <span class="st">&#39;seeker&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;5 days&#39;</span>, NOW());</span></code></pre></div>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440001&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;tanvir@seeker.com&#39;</span>, <span class="st">&#39;seeker&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;30 days&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;2 days&#39;</span>),</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440002&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;sadia@seeker.com&#39;</span>, <span class="st">&#39;seeker&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;25 days&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;1 day&#39;</span>),</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440003&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;rakib@seeker.com&#39;</span>, <span class="st">&#39;seeker&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;20 days&#39;</span>, NOW()),</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440004&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;nusrat@employer.com&#39;</span>, <span class="st">&#39;employer&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;60 days&#39;</span>, NOW()),</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440005&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;faysal@employer.com&#39;</span>, <span class="st">&#39;employer&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;50 days&#39;</span>, NOW()),</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440006&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;tukabbir@admin.com&#39;</span>, <span class="st">&#39;admin&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;100 days&#39;</span>, NOW()),</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440007&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;niloy@seeker.com&#39;</span>, <span class="st">&#39;seeker&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;15 days&#39;</span>, NOW()),</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440008&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;sakhawat@seeker.com&#39;</span>, <span class="st">&#39;seeker&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;10 days&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;5 days&#39;</span>),</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440009&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;animesh@employer.com&#39;</span>, <span class="st">&#39;employer&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;40 days&#39;</span>, NOW()),</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440010&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;mohammad@seeker.com&#39;</span>, <span class="st">&#39;seeker&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;5 days&#39;</span>, NOW());</span></code></pre></div>
 <p><strong>Output Snapshot:</strong></p>
 <pre><code> id                                   | email               | role      | created_at              | last_login
 --------------------------------------|---------------------|-----------|-------------------------|---------------------
- 550e8400-e29b-41d4-a716-446655440001 | alice@seeker.com    | seeker    | 2026-06-01 12:00:00 UTC | 2026-06-29 12:00:00 UTC
- 550e8400-e29b-41d4-a716-446655440002 | bob@seeker.com      | seeker    | 2026-06-06 12:00:00 UTC | 2026-06-30 12:00:00 UTC
- 550e8400-e29b-41d4-a716-446655440003 | charlie@seeker.com  | seeker    | 2026-06-11 12:00:00 UTC | 2026-07-01 12:00:00 UTC
- 550e8400-e29b-41d4-a716-446655440004 | diana@employer.com  | employer  | 2026-05-02 12:00:00 UTC | 2026-07-01 12:00:00 UTC
- 550e8400-e29b-41d4-a716-446655440005 | evan@employer.com   | employer  | 2026-05-12 12:00:00 UTC | 2026-07-01 12:00:00 UTC
- 550e8400-e29b-41d4-a716-446655440006 | frank@admin.com     | admin     | 2026-03-23 12:00:00 UTC | 2026-07-01 12:00:00 UTC
- 550e8400-e29b-41d4-a716-446655440007 | grace@seeker.com    | seeker    | 2026-06-16 12:00:00 UTC | 2026-07-01 12:00:00 UTC
- 550e8400-e29b-41d4-a716-446655440008 | henry@seeker.com    | seeker    | 2026-06-21 12:00:00 UTC | 2026-06-26 12:00:00 UTC
- 550e8400-e29b-41d4-a716-446655440009 | isla@employer.com   | employer  | 2026-05-22 12:00:00 UTC | 2026-07-01 12:00:00 UTC
- 550e8400-e29b-41d4-a716-446655440010 | jack@seeker.com     | seeker    | 2026-06-26 12:00:00 UTC | 2026-07-01 12:00:00 UTC</code></pre>
+ 550e8400-e29b-41d4-a716-446655440001 | tanvir@seeker.com    | seeker    | 2026-06-01 12:00:00 UTC | 2026-06-29 12:00:00 UTC
+ 550e8400-e29b-41d4-a716-446655440002 | sadia@seeker.com      | seeker    | 2026-06-06 12:00:00 UTC | 2026-06-30 12:00:00 UTC
+ 550e8400-e29b-41d4-a716-446655440003 | rakib@seeker.com  | seeker    | 2026-06-11 12:00:00 UTC | 2026-07-01 12:00:00 UTC
+ 550e8400-e29b-41d4-a716-446655440004 | nusrat@employer.com  | employer  | 2026-05-02 12:00:00 UTC | 2026-07-01 12:00:00 UTC
+ 550e8400-e29b-41d4-a716-446655440005 | faysal@employer.com   | employer  | 2026-05-12 12:00:00 UTC | 2026-07-01 12:00:00 UTC
+ 550e8400-e29b-41d4-a716-446655440006 | tukabbir@admin.com     | admin     | 2026-03-23 12:00:00 UTC | 2026-07-01 12:00:00 UTC
+ 550e8400-e29b-41d4-a716-446655440007 | niloy@seeker.com    | seeker    | 2026-06-16 12:00:00 UTC | 2026-07-01 12:00:00 UTC
+ 550e8400-e29b-41d4-a716-446655440008 | sakhawat@seeker.com    | seeker    | 2026-06-21 12:00:00 UTC | 2026-06-26 12:00:00 UTC
+ 550e8400-e29b-41d4-a716-446655440009 | animesh@employer.com   | employer  | 2026-05-22 12:00:00 UTC | 2026-07-01 12:00:00 UTC
+ 550e8400-e29b-41d4-a716-446655440010 | mohammad@seeker.com     | seeker    | 2026-06-26 12:00:00 UTC | 2026-07-01 12:00:00 UTC</code></pre>
 <h4 id="sample-data-2-companies">Sample Data 2: Companies</h4>
 <div class="sourceCode" id="cb17"><pre
 class="sourceCode sql"><code class="sourceCode sql"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> <span class="kw">public</span>.companies (<span class="kw">id</span>, name, industry, description, website_url, logo_url, founded_year) <span class="kw">VALUES</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;660e8400-e29b-41d4-a716-446655440001&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;TechCorp Industries&#39;</span>, <span class="st">&#39;Technology&#39;</span>, <span class="st">&#39;Leading software development company&#39;</span>, <span class="st">&#39;https://techcorp.com&#39;</span>, <span class="st">&#39;https://logo.techcorp.com&#39;</span>, <span class="dv">2010</span>),</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;660e8400-e29b-41d4-a716-446655440002&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;InnovateLabs&#39;</span>, <span class="st">&#39;Software/AI&#39;</span>, <span class="st">&#39;AI and machine learning solutions&#39;</span>, <span class="st">&#39;https://innovatelabs.com&#39;</span>, <span class="st">&#39;https://logo.innovatelabs.com&#39;</span>, <span class="dv">2015</span>),</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;660e8400-e29b-41d4-a716-446655440003&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;DesignStudio&#39;</span>, <span class="st">&#39;Design/Creative&#39;</span>, <span class="st">&#39;Digital design and UX agency&#39;</span>, <span class="st">&#39;https://designstudio.com&#39;</span>, <span class="st">&#39;https://logo.designstudio.com&#39;</span>, <span class="dv">2012</span>),</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;660e8400-e29b-41d4-a716-446655440004&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;DataViz Corp&#39;</span>, <span class="st">&#39;Data Analytics&#39;</span>, <span class="st">&#39;Business intelligence solutions&#39;</span>, <span class="st">&#39;https://dataviz.com&#39;</span>, <span class="st">&#39;https://logo.dataviz.com&#39;</span>, <span class="dv">2018</span>),</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;660e8400-e29b-41d4-a716-446655440005&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;CloudStack&#39;</span>, <span class="st">&#39;Cloud Services&#39;</span>, <span class="st">&#39;Cloud infrastructure provider&#39;</span>, <span class="st">&#39;https://cloudstack.com&#39;</span>, <span class="st">&#39;https://logo.cloudstack.com&#39;</span>, <span class="dv">2008</span>);</span></code></pre></div>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;660e8400-e29b-41d4-a716-446655440001&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;Pathao&#39;</span>, <span class="st">&#39;Technology&#39;</span>, <span class="st">&#39;Leading software development company&#39;</span>, <span class="st">&#39;https://pathao.com&#39;</span>, <span class="st">&#39;https://logo.pathao.com&#39;</span>, <span class="dv">2010</span>),</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;660e8400-e29b-41d4-a716-446655440002&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;bKash&#39;</span>, <span class="st">&#39;Software/AI&#39;</span>, <span class="st">&#39;AI and machine learning solutions&#39;</span>, <span class="st">&#39;https://bkash.com&#39;</span>, <span class="st">&#39;https://logo.bkash.com&#39;</span>, <span class="dv">2015</span>),</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;660e8400-e29b-41d4-a716-446655440003&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;Brain Station 23&#39;</span>, <span class="st">&#39;Design/Creative&#39;</span>, <span class="st">&#39;Digital design and UX agency&#39;</span>, <span class="st">&#39;https://brainstation23.com&#39;</span>, <span class="st">&#39;https://logo.brainstation23.com&#39;</span>, <span class="dv">2012</span>),</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;660e8400-e29b-41d4-a716-446655440004&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;TigerIT&#39;</span>, <span class="st">&#39;Data Analytics&#39;</span>, <span class="st">&#39;Business intelligence solutions&#39;</span>, <span class="st">&#39;https://tigerit.com&#39;</span>, <span class="st">&#39;https://logo.tigerit.com&#39;</span>, <span class="dv">2018</span>),</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;660e8400-e29b-41d4-a716-446655440005&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;Enosis Solutions&#39;</span>, <span class="st">&#39;Cloud Services&#39;</span>, <span class="st">&#39;Cloud infrastructure provider&#39;</span>, <span class="st">&#39;https://enosis.com&#39;</span>, <span class="st">&#39;https://logo.enosis.com&#39;</span>, <span class="dv">2008</span>);</span></code></pre></div>
 <p><strong>Output Snapshot:</strong></p>
 <pre><code> id                                   | name               | industry          | description                      | website_url            | founded_year
 --------------------------------------|--------------------|--------------------|----------------------------------|------------------------|-----------
- 660e8400-e29b-41d4-a716-446655440001 | TechCorp Industries| Technology         | Leading software development ... | https://techcorp.com   | 2010
- 660e8400-e29b-41d4-a716-446655440002 | InnovateLabs       | Software/AI        | AI and machine learning sol ...  | https://innovatelabs.com| 2015
- 660e8400-e29b-41d4-a716-446655440003 | DesignStudio       | Design/Creative    | Digital design and UX agency ...| https://designstudio.com| 2012
- 660e8400-e29b-41d4-a716-446655440004 | DataViz Corp       | Data Analytics     | Business intelligence solutions  | https://dataviz.com    | 2018
- 660e8400-e29b-41d4-a716-446655440005 | CloudStack         | Cloud Services     | Cloud infrastructure provider    | https://cloudstack.com | 2008</code></pre>
+ 660e8400-e29b-41d4-a716-446655440001 | Pathao| Technology         | Leading software development ... | https://pathao.com   | 2010
+ 660e8400-e29b-41d4-a716-446655440002 | bKash       | Software/AI        | AI and machine learning sol ...  | https://bkash.com| 2015
+ 660e8400-e29b-41d4-a716-446655440003 | Brain Station 23       | Design/Creative    | Digital design and UX agency ...| https://brainstation23.com| 2012
+ 660e8400-e29b-41d4-a716-446655440004 | TigerIT       | Data Analytics     | Business intelligence solutions  | https://tigerit.com    | 2018
+ 660e8400-e29b-41d4-a716-446655440005 | Enosis Solutions         | Cloud Services     | Cloud infrastructure provider    | https://enosis.com | 2008</code></pre>
 <h4 id="sample-data-3-skills-master-dictionary">Sample Data 3: Skills
 (Master Dictionary)</h4>
 <div class="sourceCode" id="cb19"><pre
@@ -1133,48 +1139,48 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb19-1"><a href="#
 Profiles</h4>
 <div class="sourceCode" id="cb21"><pre
 class="sourceCode sql"><code class="sourceCode sql"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> <span class="kw">public</span>.seeker_profiles (user_id, first_name, last_name, headline, bio, location, resume_url, github_url, avatar_url, created_at, updated_at) <span class="kw">VALUES</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440001&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;Alice&#39;</span>, <span class="st">&#39;Johnson&#39;</span>, <span class="st">&#39;Full Stack Developer&#39;</span>, <span class="st">&#39;Passionate about web development and clean code&#39;</span>, <span class="st">&#39;San Francisco, CA&#39;</span>, <span class="st">&#39;https://resume.alice.pdf&#39;</span>, <span class="st">&#39;https://github.com/alice&#39;</span>, <span class="st">&#39;https://avatar.alice.jpg&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;30 days&#39;</span>, NOW()),</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440002&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;Bob&#39;</span>, <span class="st">&#39;Smith&#39;</span>, <span class="st">&#39;Junior Backend Engineer&#39;</span>, <span class="st">&#39;Learning Node.js and PostgreSQL&#39;</span>, <span class="st">&#39;New York, NY&#39;</span>, <span class="st">&#39;https://resume.bob.pdf&#39;</span>, <span class="st">&#39;https://github.com/bob&#39;</span>, <span class="st">&#39;https://avatar.bob.jpg&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;25 days&#39;</span>, NOW()),</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440003&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;Charlie&#39;</span>, <span class="st">&#39;Brown&#39;</span>, <span class="st">&#39;Data Scientist&#39;</span>, <span class="st">&#39;ML specialist with 5 years experience&#39;</span>, <span class="st">&#39;Austin, TX&#39;</span>, <span class="st">&#39;https://resume.charlie.pdf&#39;</span>, <span class="st">&#39;https://github.com/charlie&#39;</span>, <span class="st">&#39;https://avatar.charlie.jpg&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;20 days&#39;</span>, NOW()),</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440007&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;Grace&#39;</span>, <span class="st">&#39;Lee&#39;</span>, <span class="st">&#39;UI/UX Designer&#39;</span>, <span class="st">&#39;Figma and design systems expert&#39;</span>, <span class="st">&#39;Seattle, WA&#39;</span>, <span class="st">&#39;https://resume.grace.pdf&#39;</span>, <span class="kw">NULL</span>, <span class="st">&#39;https://avatar.grace.jpg&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;15 days&#39;</span>, NOW()),</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440008&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;Henry&#39;</span>, <span class="st">&#39;Wilson&#39;</span>, <span class="st">&#39;DevOps Engineer&#39;</span>, <span class="st">&#39;Docker and Kubernetes specialist&#39;</span>, <span class="st">&#39;Boston, MA&#39;</span>, <span class="st">&#39;https://resume.henry.pdf&#39;</span>, <span class="st">&#39;https://github.com/henry&#39;</span>, <span class="st">&#39;https://avatar.henry.jpg&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;10 days&#39;</span>, NOW()),</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440010&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;Jack&#39;</span>, <span class="st">&#39;Davis&#39;</span>, <span class="st">&#39;Full Stack Developer&#39;</span>, <span class="st">&#39;React and Python developer&#39;</span>, <span class="st">&#39;Denver, CO&#39;</span>, <span class="st">&#39;https://resume.jack.pdf&#39;</span>, <span class="st">&#39;https://github.com/jack&#39;</span>, <span class="st">&#39;https://avatar.jack.jpg&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;5 days&#39;</span>, NOW());</span></code></pre></div>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440001&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;Tanvir&#39;</span>, <span class="st">&#39;Rahman&#39;</span>, <span class="st">&#39;Full Stack Developer&#39;</span>, <span class="st">&#39;Passionate about web development and clean code&#39;</span>, <span class="st">&#39;Dhaka, Bangladesh&#39;</span>, <span class="st">&#39;https://resume.tanvir.pdf&#39;</span>, <span class="st">&#39;https://github.com/tanvir&#39;</span>, <span class="st">&#39;https://avatar.tanvir.jpg&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;30 days&#39;</span>, NOW()),</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440002&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;Sadia&#39;</span>, <span class="st">&#39;Begum&#39;</span>, <span class="st">&#39;Junior Backend Engineer&#39;</span>, <span class="st">&#39;Learning Node.js and PostgreSQL&#39;</span>, <span class="st">&#39;Banani, Dhaka&#39;</span>, <span class="st">&#39;https://resume.sadia.pdf&#39;</span>, <span class="st">&#39;https://github.com/sadia&#39;</span>, <span class="st">&#39;https://avatar.sadia.jpg&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;25 days&#39;</span>, NOW()),</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440003&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;Rakib&#39;</span>, <span class="st">&#39;Ghosh&#39;</span>, <span class="st">&#39;Data Scientist&#39;</span>, <span class="st">&#39;ML specialist with 5 years experience&#39;</span>, <span class="st">&#39;Chattogram, Bangladesh&#39;</span>, <span class="st">&#39;https://resume.rakib.pdf&#39;</span>, <span class="st">&#39;https://github.com/rakib&#39;</span>, <span class="st">&#39;https://avatar.rakib.jpg&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;20 days&#39;</span>, NOW()),</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440007&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;Niloy&#39;</span>, <span class="st">&#39;Mukherjee&#39;</span>, <span class="st">&#39;UI/UX Designer&#39;</span>, <span class="st">&#39;Figma and design systems expert&#39;</span>, <span class="st">&#39;Gulshan, Dhaka&#39;</span>, <span class="st">&#39;https://resume.niloy.pdf&#39;</span>, <span class="kw">NULL</span>, <span class="st">&#39;https://avatar.niloy.jpg&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;15 days&#39;</span>, NOW()),</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440008&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;Sakhawat&#39;</span>, <span class="st">&#39;Hosen&#39;</span>, <span class="st">&#39;DevOps Engineer&#39;</span>, <span class="st">&#39;Docker and Kubernetes specialist&#39;</span>, <span class="st">&#39;Sylhet, Bangladesh&#39;</span>, <span class="st">&#39;https://resume.sakhawat.pdf&#39;</span>, <span class="st">&#39;https://github.com/sakhawat&#39;</span>, <span class="st">&#39;https://avatar.sakhawat.jpg&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;10 days&#39;</span>, NOW()),</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440010&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;Mohammad&#39;</span>, <span class="st">&#39;Sakhawat&#39;</span>, <span class="st">&#39;Full Stack Developer&#39;</span>, <span class="st">&#39;React and Python developer&#39;</span>, <span class="st">&#39;Mirpur, Dhaka&#39;</span>, <span class="st">&#39;https://resume.mohammad.pdf&#39;</span>, <span class="st">&#39;https://github.com/mohammad&#39;</span>, <span class="st">&#39;https://avatar.mohammad.jpg&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;5 days&#39;</span>, NOW());</span></code></pre></div>
 <p><strong>Output Snapshot:</strong></p>
 <pre><code> user_id                              | first_name | last_name | headline                | location           | years_experience
 --------------------------------------|------------|-----------|-------------------------|--------------------|---------
- 550e8400-e29b-41d4-a716-446655440001 | Alice      | Johnson   | Full Stack Developer    | San Francisco, CA  | 4
- 550e8400-e29b-41d4-a716-446655440002 | Bob        | Smith     | Junior Backend Engineer | New York, NY       | 1
- 550e8400-e29b-41d4-a716-446655440003 | Charlie    | Brown     | Data Scientist          | Austin, TX         | 5
- 550e8400-e29b-41d4-a716-446655440007 | Grace      | Lee       | UI/UX Designer          | Seattle, WA        | 3
- 550e8400-e29b-41d4-a716-446655440008 | Henry      | Wilson    | DevOps Engineer         | Boston, MA         | 3
- 550e8400-e29b-41d4-a716-446655440010 | Jack       | Davis     | Full Stack Developer    | Denver, CO         | 2</code></pre>
+ 550e8400-e29b-41d4-a716-446655440001 | Tanvir      | Rahman   | Full Stack Developer    | Dhaka, Bangladesh  | 4
+ 550e8400-e29b-41d4-a716-446655440002 | Sadia        | Begum     | Junior Backend Engineer | Banani, Dhaka       | 1
+ 550e8400-e29b-41d4-a716-446655440003 | Rakib    | Ghosh     | Data Scientist          | Chattogram, Bangladesh         | 5
+ 550e8400-e29b-41d4-a716-446655440007 | Niloy      | Mukherjee       | UI/UX Designer          | Gulshan, Dhaka        | 3
+ 550e8400-e29b-41d4-a716-446655440008 | Sakhawat      | Hosen    | DevOps Engineer         | Sylhet, Bangladesh         | 3
+ 550e8400-e29b-41d4-a716-446655440010 | Mohammad       | Sakhawat     | Full Stack Developer    | Mirpur, Dhaka         | 2</code></pre>
 <h4 id="sample-data-5-seeker-skills">Sample Data 5: Seeker Skills</h4>
 <div class="sourceCode" id="cb23"><pre
 class="sourceCode sql"><code class="sourceCode sql"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> <span class="kw">public</span>.seeker_skills (seeker_id, skill_id, years_of_experience, proficiency) <span class="kw">VALUES</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- Alice (Full Stack)</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- Tanvir (Full Stack)</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440001&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;770e8400-e29b-41d4-a716-446655440001&#39;</span>:<span class="ch">:uuid</span>, <span class="dv">4</span>, <span class="st">&#39;expert&#39;</span>),      <span class="co">-- JavaScript</span></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440001&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;770e8400-e29b-41d4-a716-446655440003&#39;</span>:<span class="ch">:uuid</span>, <span class="fl">3.5</span>, <span class="st">&#39;expert&#39;</span>),    <span class="co">-- React</span></span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440001&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;770e8400-e29b-41d4-a716-446655440005&#39;</span>:<span class="ch">:uuid</span>, <span class="dv">3</span>, <span class="st">&#39;intermediate&#39;</span>), <span class="co">-- PostgreSQL</span></span>
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">-- Bob (Junior Backend)</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">-- Sadia (Junior Backend)</span></span>
 <span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440002&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;770e8400-e29b-41d4-a716-446655440002&#39;</span>:<span class="ch">:uuid</span>, <span class="dv">1</span>, <span class="st">&#39;intermediate&#39;</span>), <span class="co">-- TypeScript</span></span>
 <span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440002&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;770e8400-e29b-41d4-a716-446655440004&#39;</span>:<span class="ch">:uuid</span>, <span class="fl">1.5</span>, <span class="st">&#39;intermediate&#39;</span>),<span class="co">-- Python</span></span>
 <span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440002&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;770e8400-e29b-41d4-a716-446655440005&#39;</span>:<span class="ch">:uuid</span>, <span class="dv">1</span>, <span class="st">&#39;beginner&#39;</span>),     <span class="co">-- PostgreSQL</span></span>
 <span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="co">-- Charlie (Data Scientist)</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="co">-- Rakib (Data Scientist)</span></span>
 <span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440003&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;770e8400-e29b-41d4-a716-446655440004&#39;</span>:<span class="ch">:uuid</span>, <span class="dv">5</span>, <span class="st">&#39;expert&#39;</span>),       <span class="co">-- Python</span></span>
 <span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440003&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;770e8400-e29b-41d4-a716-446655440008&#39;</span>:<span class="ch">:uuid</span>, <span class="dv">4</span>, <span class="st">&#39;expert&#39;</span>),       <span class="co">-- Machine Learning</span></span>
 <span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440003&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;770e8400-e29b-41d4-a716-446655440009&#39;</span>:<span class="ch">:uuid</span>, <span class="dv">5</span>, <span class="st">&#39;expert&#39;</span>),       <span class="co">-- Data Analysis</span></span>
 <span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="co">-- Grace (Designer)</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="co">-- Niloy (Designer)</span></span>
 <span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440007&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;770e8400-e29b-41d4-a716-446655440010&#39;</span>:<span class="ch">:uuid</span>, <span class="dv">3</span>, <span class="st">&#39;expert&#39;</span>),       <span class="co">-- Figma</span></span>
 <span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440007&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;770e8400-e29b-41d4-a716-446655440011&#39;</span>:<span class="ch">:uuid</span>, <span class="dv">3</span>, <span class="st">&#39;expert&#39;</span>),       <span class="co">-- UI/UX Design</span></span>
 <span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a><span class="co">-- Henry (DevOps)</span></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a><span class="co">-- Sakhawat (DevOps)</span></span>
 <span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440008&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;770e8400-e29b-41d4-a716-446655440006&#39;</span>:<span class="ch">:uuid</span>, <span class="dv">3</span>, <span class="st">&#39;expert&#39;</span>),       <span class="co">-- Docker</span></span>
 <span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440008&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;770e8400-e29b-41d4-a716-446655440007&#39;</span>:<span class="ch">:uuid</span>, <span class="fl">2.5</span>, <span class="st">&#39;expert&#39;</span>),     <span class="co">-- AWS</span></span>
 <span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a><span class="co">-- Jack (Full Stack)</span></span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a><span class="co">-- Mohammad (Full Stack)</span></span>
 <span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440010&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;770e8400-e29b-41d4-a716-446655440001&#39;</span>:<span class="ch">:uuid</span>, <span class="dv">2</span>, <span class="st">&#39;expert&#39;</span>),       <span class="co">-- JavaScript</span></span>
 <span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440010&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;770e8400-e29b-41d4-a716-446655440003&#39;</span>:<span class="ch">:uuid</span>, <span class="dv">2</span>, <span class="st">&#39;expert&#39;</span>),       <span class="co">-- React</span></span>
 <span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;550e8400-e29b-41d4-a716-446655440010&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;770e8400-e29b-41d4-a716-446655440004&#39;</span>:<span class="ch">:uuid</span>, <span class="dv">1</span>, <span class="st">&#39;intermediate&#39;</span>); <span class="co">-- Python</span></span></code></pre></div>
@@ -1200,21 +1206,21 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb23-1"><a href="#
 <h4 id="sample-data-6-jobs">Sample Data 6: Jobs</h4>
 <div class="sourceCode" id="cb25"><pre
 class="sourceCode sql"><code class="sourceCode sql"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> <span class="kw">public</span>.jobs (<span class="kw">id</span>, company_id, posted_by_user_id, title, description, location, salary_min, salary_max, job_type, status, created_at, updated_at) <span class="kw">VALUES</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;880e8400-e29b-41d4-a716-446655440001&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;660e8400-e29b-41d4-a716-446655440001&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;550e8400-e29b-41d4-a716-446655440004&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;Senior React Developer&#39;</span>, <span class="st">&#39;Looking for experienced React developer&#39;</span>, <span class="st">&#39;San Francisco, CA&#39;</span>, <span class="dv">120000</span>, <span class="dv">150000</span>, <span class="st">&#39;full_time&#39;</span>, <span class="st">&#39;open&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;15 days&#39;</span>, NOW()),</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;880e8400-e29b-41d4-a716-446655440001&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;660e8400-e29b-41d4-a716-446655440001&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;550e8400-e29b-41d4-a716-446655440004&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;Senior React Developer&#39;</span>, <span class="st">&#39;Looking for experienced React developer&#39;</span>, <span class="st">&#39;Dhaka, Bangladesh&#39;</span>, <span class="dv">120000</span>, <span class="dv">150000</span>, <span class="st">&#39;full_time&#39;</span>, <span class="st">&#39;open&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;15 days&#39;</span>, NOW()),</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;880e8400-e29b-41d4-a716-446655440002&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;660e8400-e29b-41d4-a716-446655440001&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;550e8400-e29b-41d4-a716-446655440004&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;Backend Engineer&#39;</span>, <span class="st">&#39;Node.js and PostgreSQL backend development&#39;</span>, <span class="st">&#39;Remote&#39;</span>, <span class="dv">100000</span>, <span class="dv">130000</span>, <span class="st">&#39;remote&#39;</span>, <span class="st">&#39;open&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;10 days&#39;</span>, NOW()),</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;880e8400-e29b-41d4-a716-446655440003&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;660e8400-e29b-41d4-a716-446655440002&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;550e8400-e29b-41d4-a716-446655440005&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;Machine Learning Engineer&#39;</span>, <span class="st">&#39;Build ML models for data processing&#39;</span>, <span class="st">&#39;Boston, MA&#39;</span>, <span class="dv">130000</span>, <span class="dv">160000</span>, <span class="st">&#39;full_time&#39;</span>, <span class="st">&#39;open&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;8 days&#39;</span>, NOW()),</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;880e8400-e29b-41d4-a716-446655440004&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;660e8400-e29b-41d4-a716-446655440003&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;550e8400-e29b-41d4-a716-446655440009&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;UI/UX Designer&#39;</span>, <span class="st">&#39;Design modern user interfaces&#39;</span>, <span class="st">&#39;Seattle, WA&#39;</span>, <span class="dv">90000</span>, <span class="dv">120000</span>, <span class="st">&#39;full_time&#39;</span>, <span class="st">&#39;open&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;5 days&#39;</span>, NOW()),</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;880e8400-e29b-41d4-a716-446655440005&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;660e8400-e29b-41d4-a716-446655440005&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;550e8400-e29b-41d4-a716-446655440005&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;DevOps Engineer&#39;</span>, <span class="st">&#39;Infrastructure and deployment&#39;</span>, <span class="st">&#39;New York, NY&#39;</span>, <span class="dv">110000</span>, <span class="dv">140000</span>, <span class="st">&#39;full_time&#39;</span>, <span class="st">&#39;open&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;3 days&#39;</span>, NOW()),</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;880e8400-e29b-41d4-a716-446655440006&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;660e8400-e29b-41d4-a716-446655440001&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;550e8400-e29b-41d4-a716-446655440004&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;Python Developer&#39;</span>, <span class="st">&#39;Backend development with Python&#39;</span>, <span class="st">&#39;Austin, TX&#39;</span>, <span class="dv">85000</span>, <span class="dv">110000</span>, <span class="st">&#39;full_time&#39;</span>, <span class="st">&#39;closed&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;30 days&#39;</span>, NOW());</span></code></pre></div>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;880e8400-e29b-41d4-a716-446655440003&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;660e8400-e29b-41d4-a716-446655440002&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;550e8400-e29b-41d4-a716-446655440005&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;Machine Learning Engineer&#39;</span>, <span class="st">&#39;Build ML models for data processing&#39;</span>, <span class="st">&#39;Sylhet, Bangladesh&#39;</span>, <span class="dv">130000</span>, <span class="dv">160000</span>, <span class="st">&#39;full_time&#39;</span>, <span class="st">&#39;open&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;8 days&#39;</span>, NOW()),</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;880e8400-e29b-41d4-a716-446655440004&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;660e8400-e29b-41d4-a716-446655440003&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;550e8400-e29b-41d4-a716-446655440009&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;UI/UX Designer&#39;</span>, <span class="st">&#39;Design modern user interfaces&#39;</span>, <span class="st">&#39;Gulshan, Dhaka&#39;</span>, <span class="dv">90000</span>, <span class="dv">120000</span>, <span class="st">&#39;full_time&#39;</span>, <span class="st">&#39;open&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;5 days&#39;</span>, NOW()),</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;880e8400-e29b-41d4-a716-446655440005&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;660e8400-e29b-41d4-a716-446655440005&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;550e8400-e29b-41d4-a716-446655440005&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;DevOps Engineer&#39;</span>, <span class="st">&#39;Infrastructure and deployment&#39;</span>, <span class="st">&#39;Banani, Dhaka&#39;</span>, <span class="dv">110000</span>, <span class="dv">140000</span>, <span class="st">&#39;full_time&#39;</span>, <span class="st">&#39;open&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;3 days&#39;</span>, NOW()),</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>(<span class="st">&#39;880e8400-e29b-41d4-a716-446655440006&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;660e8400-e29b-41d4-a716-446655440001&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;550e8400-e29b-41d4-a716-446655440004&#39;</span>:<span class="ch">:uuid</span>, <span class="st">&#39;Python Developer&#39;</span>, <span class="st">&#39;Backend development with Python&#39;</span>, <span class="st">&#39;Chattogram, Bangladesh&#39;</span>, <span class="dv">85000</span>, <span class="dv">110000</span>, <span class="st">&#39;full_time&#39;</span>, <span class="st">&#39;closed&#39;</span>, NOW() <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">&#39;30 days&#39;</span>, NOW());</span></code></pre></div>
 <p><strong>Output Snapshot:</strong></p>
 <pre><code> id                                   | company_name        | title                  | location           | salary_min | salary_max | job_type  | status
 --------------------------------------|---------------------|------------------------|--------------------|------------|------------|----------|--------
- 880e8400-e29b-41d4-a716-446655440001 | TechCorp Industries | Senior React Developer | San Francisco, CA  | 120000     | 150000     | full_time | open
- 880e8400-e29b-41d4-a716-446655440002 | TechCorp Industries | Backend Engineer       | Remote             | 100000     | 130000     | remote    | open
- 880e8400-e29b-41d4-a716-446655440003 | InnovateLabs        | Machine Learning Eng   | Boston, MA         | 130000     | 160000     | full_time | open
- 880e8400-e29b-41d4-a716-446655440004 | DesignStudio        | UI/UX Designer         | Seattle, WA        | 90000      | 120000     | full_time | open
- 880e8400-e29b-41d4-a716-446655440005 | CloudStack          | DevOps Engineer        | New York, NY       | 110000     | 140000     | full_time | open
- 880e8400-e29b-41d4-a716-446655440006 | TechCorp Industries | Python Developer       | Austin, TX         | 85000      | 110000     | full_time | closed</code></pre>
+ 880e8400-e29b-41d4-a716-446655440001 | Pathao | Senior React Developer | Dhaka, Bangladesh  | 120000     | 150000     | full_time | open
+ 880e8400-e29b-41d4-a716-446655440002 | Pathao | Backend Engineer       | Remote             | 100000     | 130000     | remote    | open
+ 880e8400-e29b-41d4-a716-446655440003 | bKash        | Machine Learning Eng   | Sylhet, Bangladesh         | 130000     | 160000     | full_time | open
+ 880e8400-e29b-41d4-a716-446655440004 | Brain Station 23        | UI/UX Designer         | Gulshan, Dhaka        | 90000      | 120000     | full_time | open
+ 880e8400-e29b-41d4-a716-446655440005 | Enosis Solutions          | DevOps Engineer        | Banani, Dhaka       | 110000     | 140000     | full_time | open
+ 880e8400-e29b-41d4-a716-446655440006 | Pathao | Python Developer       | Chattogram, Bangladesh         | 85000      | 110000     | full_time | closed</code></pre>
 <h4 id="sample-data-7-job-skills">Sample Data 7: Job Skills</h4>
 <div class="sourceCode" id="cb27"><pre
 class="sourceCode sql"><code class="sourceCode sql"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> <span class="kw">public</span>.job_skills (job_id, skill_id, is_required) <span class="kw">VALUES</span></span>
@@ -1276,14 +1282,14 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb29-1"><a href="#
 <p><strong>Output Snapshot:</strong></p>
 <pre><code> id                                   | job_title                  | seeker_name | status      | applied_at
 --------------------------------------|---------------------------|-------------|-------------|-------------------
- 990e8400-e29b-41d4-a716-446655440001 | Senior React Developer     | Alice       | interviewing| 2026-06-21
- 990e8400-e29b-41d4-a716-446655440002 | Senior React Developer     | Jack        | reviewing   | 2026-06-23
- 990e8400-e29b-41d4-a716-446655440003 | Backend Engineer           | Bob         | pending     | 2026-06-24
- 990e8400-e29b-41d4-a716-446655440004 | Machine Learning Engineer  | Charlie     | offered     | 2026-06-25
- 990e8400-e29b-41d4-a716-446655440005 | UI/UX Designer             | Grace       | reviewing   | 2026-06-27
- 990e8400-e29b-41d4-a716-446655440006 | DevOps Engineer            | Henry       | interviewing| 2026-06-29
- 990e8400-e29b-41d4-a716-446655440007 | Backend Engineer           | Jack        | pending     | 2026-06-30
- 990e8400-e29b-41d4-a716-446655440008 | Senior React Developer     | Charlie     | rejected    | 2026-06-26</code></pre>
+ 990e8400-e29b-41d4-a716-446655440001 | Senior React Developer     | Tanvir       | interviewing| 2026-06-21
+ 990e8400-e29b-41d4-a716-446655440002 | Senior React Developer     | Mohammad        | reviewing   | 2026-06-23
+ 990e8400-e29b-41d4-a716-446655440003 | Backend Engineer           | Sadia         | pending     | 2026-06-24
+ 990e8400-e29b-41d4-a716-446655440004 | Machine Learning Engineer  | Rakib     | offered     | 2026-06-25
+ 990e8400-e29b-41d4-a716-446655440005 | UI/UX Designer             | Niloy       | reviewing   | 2026-06-27
+ 990e8400-e29b-41d4-a716-446655440006 | DevOps Engineer            | Sakhawat       | interviewing| 2026-06-29
+ 990e8400-e29b-41d4-a716-446655440007 | Backend Engineer           | Mohammad        | pending     | 2026-06-30
+ 990e8400-e29b-41d4-a716-446655440008 | Senior React Developer     | Rakib     | rejected    | 2026-06-26</code></pre>
 <h4 id="sample-data-9-interviews">Sample Data 9: Interviews</h4>
 <div class="sourceCode" id="cb31"><pre
 class="sourceCode sql"><code class="sourceCode sql"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> <span class="kw">public</span>.interviews (<span class="kw">id</span>, application_id, interviewer_id, scheduled_at, interview_type, notes, feedback_score, created_at) <span class="kw">VALUES</span></span>
@@ -1328,11 +1334,11 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb33-1"><a href="#
 <p><strong>Output Snapshot:</strong></p>
 <pre><code> application_id | job_title                | seeker_name     | status       | location           | applied_at
 ----------------|--------------------------|-----------------|--------------|--------------------|-----------
- 990e...001     | Senior React Developer   | Alice Johnson   | interviewing | San Francisco, CA  | 2026-06-21
- 990e...002     | Senior React Developer   | Jack Davis      | reviewing    | San Francisco, CA  | 2026-06-23
- 990e...003     | Backend Engineer         | Bob Smith       | pending      | Remote             | 2026-06-24
- 990e...004     | Machine Learning Engine  | Charlie Brown   | offered      | Boston, MA         | 2026-06-25
- 990e...005     | UI/UX Designer           | Grace Lee       | reviewing    | Seattle, WA        | 2026-06-27</code></pre>
+ 990e...001     | Senior React Developer   | Tanvir Rahman   | interviewing | Dhaka, Bangladesh  | 2026-06-21
+ 990e...002     | Senior React Developer   | Mohammad Sakhawat      | reviewing    | Dhaka, Bangladesh  | 2026-06-23
+ 990e...003     | Backend Engineer         | Sadia Begum       | pending      | Remote             | 2026-06-24
+ 990e...004     | Machine Learning Engine  | Rakib Ghosh   | offered      | Sylhet, Bangladesh         | 2026-06-25
+ 990e...005     | UI/UX Designer           | Niloy Mukherjee       | reviewing    | Gulshan, Dhaka        | 2026-06-27</code></pre>
 <h4 id="query-1.2-cross-product-cartesian-product">Query 1.2: Cross
 Product (Cartesian Product)</h4>
 <p><strong>Description:</strong> Generate all possible combinations of
@@ -1354,16 +1360,16 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb36-1"><a href="#
 <p><strong>Output Snapshot:</strong></p>
 <pre><code> company_name        | skill_name           | category
 ---------------------|----------------------|------------------
- CloudStack          | AWS                  | Engineering
- CloudStack          | Data Analysis        | Data &amp; AI
- CloudStack          | Docker               | Engineering
- CloudStack          | Java                 | Engineering
- CloudStack          | JavaScript           | Engineering
- CloudStack          | Machine Learning     | Data &amp; AI
- CloudStack          | Python               | Engineering
- CloudStack          | PostgreSQL           | Engineering
- DataViz Corp        | AWS                  | Engineering
- DataViz Corp        | Data Analysis        | Data &amp; AI</code></pre>
+ Enosis Solutions          | AWS                  | Engineering
+ Enosis Solutions          | Data Analysis        | Data &amp; AI
+ Enosis Solutions          | Docker               | Engineering
+ Enosis Solutions          | Java                 | Engineering
+ Enosis Solutions          | JavaScript           | Engineering
+ Enosis Solutions          | Machine Learning     | Data &amp; AI
+ Enosis Solutions          | Python               | Engineering
+ Enosis Solutions          | PostgreSQL           | Engineering
+ TigerIT        | AWS                  | Engineering
+ TigerIT        | Data Analysis        | Data &amp; AI</code></pre>
 <h4 id="query-1.3-left-outer-join">Query 1.3: Left Outer Join</h4>
 <p><strong>Description:</strong> Find all jobs and count their
 applications, showing jobs with zero applications.</p>
@@ -1389,12 +1395,12 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb39-1"><a href="#
 <p><strong>Output Snapshot:</strong></p>
 <pre><code> id         | title                    | company_name        | status | application_count | total_applications
 ------------|--------------------------|---------------------|--------|-------------------|------------------
- 880e...001 | Senior React Developer   | TechCorp Industries | open   | 3                 | 3
- 880e...002 | Backend Engineer         | TechCorp Industries | open   | 2                 | 2
- 880e...003 | Machine Learning Engineer| InnovateLabs        | open   | 1                 | 1
- 880e...005 | DevOps Engineer          | CloudStack          | open   | 1                 | 1
- 880e...004 | UI/UX Designer           | DesignStudio        | open   | 1                 | 1
- 880e...006 | Python Developer         | TechCorp Industries | closed | 0                 | 0</code></pre>
+ 880e...001 | Senior React Developer   | Pathao | open   | 3                 | 3
+ 880e...002 | Backend Engineer         | Pathao | open   | 2                 | 2
+ 880e...003 | Machine Learning Engineer| bKash        | open   | 1                 | 1
+ 880e...005 | DevOps Engineer          | Enosis Solutions          | open   | 1                 | 1
+ 880e...004 | UI/UX Designer           | Brain Station 23        | open   | 1                 | 1
+ 880e...006 | Python Developer         | Pathao | closed | 0                 | 0</code></pre>
 <h4 id="query-1.4-join-with-using-clause">Query 1.4: Join with USING
 Clause</h4>
 <p><strong>Description:</strong> Find seekers and their skills with
@@ -1429,17 +1435,17 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb43-1"><a href="#
 <p><strong>Output Snapshot:</strong></p>
 <pre><code> seeker_name     | skill_name           | category       | years_of_experience | proficiency
 -----------------|----------------------|-----------------|--------------------|-----------
- Alice Johnson   | React                | Engineering    | 3.5                | expert
- Alice Johnson   | JavaScript           | Engineering    | 4.0                | expert
- Charlie Brown   | Data Analysis        | Data &amp; AI      | 5.0                | expert
- Charlie Brown   | Machine Learning     | Data &amp; AI      | 4.0                | expert
- Charlie Brown   | Python               | Engineering    | 5.0                | expert
- Grace Lee       | Figma                | Design         | 3.0                | expert
- Grace Lee       | UI/UX Design         | Design         | 3.0                | expert
- Henry Wilson    | Docker               | Engineering    | 3.0                | expert
- Henry Wilson    | AWS                  | Engineering    | 2.5                | expert
- Jack Davis      | JavaScript           | Engineering    | 2.0                | expert
- Jack Davis      | React                | Engineering    | 2.0                | expert</code></pre>
+ Tanvir Rahman   | React                | Engineering    | 3.5                | expert
+ Tanvir Rahman   | JavaScript           | Engineering    | 4.0                | expert
+ Rakib Ghosh   | Data Analysis        | Data &amp; AI      | 5.0                | expert
+ Rakib Ghosh   | Machine Learning     | Data &amp; AI      | 4.0                | expert
+ Rakib Ghosh   | Python               | Engineering    | 5.0                | expert
+ Niloy Mukherjee       | Figma                | Design         | 3.0                | expert
+ Niloy Mukherjee       | UI/UX Design         | Design         | 3.0                | expert
+ Sakhawat Hosen    | Docker               | Engineering    | 3.0                | expert
+ Sakhawat Hosen    | AWS                  | Engineering    | 2.5                | expert
+ Mohammad Sakhawat      | JavaScript           | Engineering    | 2.0                | expert
+ Mohammad Sakhawat      | React                | Engineering    | 2.0                | expert</code></pre>
 <h4 id="query-1.5-right-outer-join">Query 1.5: Right Outer Join</h4>
 <p><strong>Description:</strong> Find all skills and how many seekers
 have each skill.</p>
@@ -1496,10 +1502,10 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb47-1"><a href="#
 <p><strong>Output Snapshot:</strong></p>
 <pre><code> id         | name                | industry       | founded_year
 ------------|---------------------|----------------|-----------
- 660e...001 | TechCorp Industries | Technology     | 2010
- 660e...002 | InnovateLabs        | Software/AI    | 2015
- 660e...003 | DesignStudio        | Design/Creativ | 2012
- 660e...005 | CloudStack          | Cloud Services | 2008</code></pre>
+ 660e...001 | Pathao | Technology     | 2010
+ 660e...002 | bKash        | Software/AI    | 2015
+ 660e...003 | Brain Station 23        | Design/Creativ | 2012
+ 660e...005 | Enosis Solutions          | Cloud Services | 2008</code></pre>
 <h4 id="query-2.2-subquery-with-not-exists-clause">Query 2.2: Subquery
 with NOT EXISTS Clause</h4>
 <p><strong>Description:</strong> Find applicants who haven’t applied for
@@ -1525,8 +1531,8 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb50-1"><a href="#
 <p><strong>Output Snapshot:</strong></p>
 <pre><code> seeker_name     | total_applications
 -----------------|------------------
- Alice Johnson   | 1
- Grace Lee       | 1</code></pre>
+ Tanvir Rahman   | 1
+ Niloy Mukherjee       | 1</code></pre>
 <h4 id="query-2.3-subquery-with-any-clause">Query 2.3: Subquery with ANY
 Clause</h4>
 <p><strong>Description:</strong> Find jobs with salary higher than any
@@ -1550,10 +1556,10 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb52-1"><a href="#
 <p><strong>Output Snapshot:</strong></p>
 <pre><code> title                    | company_name        | salary_min | salary_max
 --------------------------|---------------------|------------|----------
- Machine Learning Engineer| InnovateLabs        | 130000     | 160000
- Senior React Developer   | TechCorp Industries | 120000     | 150000
- DevOps Engineer          | CloudStack          | 110000     | 140000
- Backend Engineer         | TechCorp Industries | 100000     | 130000</code></pre>
+ Machine Learning Engineer| bKash        | 130000     | 160000
+ Senior React Developer   | Pathao | 120000     | 150000
+ DevOps Engineer          | Enosis Solutions          | 110000     | 140000
+ Backend Engineer         | Pathao | 100000     | 130000</code></pre>
 <h4 id="query-2.4-subquery-with-all-clause">Query 2.4: Subquery with ALL
 Clause</h4>
 <p><strong>Description:</strong> Find seekers who have more years of
@@ -1578,8 +1584,8 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb54-1"><a href="#
 <p><strong>Output Snapshot:</strong></p>
 <pre><code> seeker_name     | avg_experience
 -----------------|---------------
- Charlie Brown   | 4.67
- Alice Johnson   | 3.5</code></pre>
+ Rakib Ghosh   | 4.67
+ Tanvir Rahman   | 3.5</code></pre>
 <h4 id="query-2.5-subquery-with-some-clause">Query 2.5: Subquery with
 SOME Clause</h4>
 <p><strong>Description:</strong> Find companies whose employees have
@@ -1601,8 +1607,8 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb56-1"><a href="#
 <p><strong>Output Snapshot:</strong></p>
 <pre><code> company_name        | industry
 ---------------------|------------------
- InnovateLabs        | Software/AI
- TechCorp Industries | Technology</code></pre>
+ bKash        | Software/AI
+ Pathao | Technology</code></pre>
 <h4 id="query-2.6-subquery-with-unique-clause">Query 2.6: Subquery with
 UNIQUE Clause</h4>
 <p><strong>Description:</strong> Find jobs with unique required skills
@@ -1685,9 +1691,9 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb62-1"><a href="#
 <p><strong>Output Snapshot:</strong></p>
 <pre><code> application_id | title                    | seeker_name     | status       | salary_min | salary_max
 ----------------|--------------------------|-----------------|--------------|------------|----------
- 990e...004     | Machine Learning Engineer| Charlie Brown   | offered      | 130000     | 160000
- 990e...001     | Senior React Developer   | Alice Johnson   | interviewing | 120000     | 150000
- 990e...006     | DevOps Engineer          | Henry Wilson    | interviewing | 110000     | 140000</code></pre>
+ 990e...004     | Machine Learning Engineer| Rakib Ghosh   | offered      | 130000     | 160000
+ 990e...001     | Senior React Developer   | Tanvir Rahman   | interviewing | 120000     | 150000
+ 990e...006     | DevOps Engineer          | Sakhawat Hosen    | interviewing | 110000     | 140000</code></pre>
 <h4 id="query-3.3-subquery-in-select-clause-scalar-subquery">Query 3.3:
 Subquery in SELECT Clause (Scalar Subquery)</h4>
 <p><strong>Description:</strong> List seekers with their profile
@@ -1711,12 +1717,12 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb64-1"><a href="#
 <p><strong>Output Snapshot:</strong></p>
 <pre><code> seeker_name      | profile_completion_percentage | skill_count | application_count
 ------------------|---------------------------------|------------|----------------
- Alice Johnson   | 100                           | 3          | 1
- Bob Smith       | 100                           | 3          | 1
- Charlie Brown   | 100                           | 3          | 2
- Grace Lee       | 80                            | 2          | 1
- Henry Wilson    | 100                           | 2          | 1
- Jack Davis      | 100                           | 3          | 2</code></pre>
+ Tanvir Rahman   | 100                           | 3          | 1
+ Sadia Begum       | 100                           | 3          | 1
+ Rakib Ghosh   | 100                           | 3          | 2
+ Niloy Mukherjee       | 80                            | 2          | 1
+ Sakhawat Hosen    | 100                           | 2          | 1
+ Mohammad Sakhawat      | 100                           | 3          | 2</code></pre>
 <h3 id="query-category-4-order-by-group-by-having-clauses">Query
 Category 4: ORDER BY, GROUP BY, HAVING Clauses</h3>
 <h4 id="query-4.1-complex-group-by-with-having">Query 4.1: Complex GROUP
@@ -1769,14 +1775,14 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb68-1"><a href="#
 <p><strong>Output Snapshot:</strong></p>
 <pre><code> application_id | job_title                 | seeker_name     | status       | applied_at | status_priority
 ----|-----|-----|---|-------|---
- 990e...004 | Machine Learning Engineer  | Charlie Brown   | offered      | 2026-06-25 | 1
- 990e...001 | Senior React Developer     | Alice Johnson   | interviewing | 2026-06-21 | 2
- 990e...006 | DevOps Engineer            | Henry Wilson    | interviewing | 2026-06-29 | 2
- 990e...002 | Senior React Developer     | Jack Davis      | reviewing    | 2026-06-23 | 3
- 990e...005 | UI/UX Designer             | Grace Lee       | reviewing    | 2026-06-27 | 3
- 990e...003 | Backend Engineer           | Bob Smith       | pending      | 2026-06-24 | 4
- 990e...007 | Backend Engineer           | Jack Davis      | pending      | 2026-06-30 | 4
- 990e...008 | Senior React Developer     | Charlie Brown   | rejected     | 2026-06-26 | 5</code></pre>
+ 990e...004 | Machine Learning Engineer  | Rakib Ghosh   | offered      | 2026-06-25 | 1
+ 990e...001 | Senior React Developer     | Tanvir Rahman   | interviewing | 2026-06-21 | 2
+ 990e...006 | DevOps Engineer            | Sakhawat Hosen    | interviewing | 2026-06-29 | 2
+ 990e...002 | Senior React Developer     | Mohammad Sakhawat      | reviewing    | 2026-06-23 | 3
+ 990e...005 | UI/UX Designer             | Niloy Mukherjee       | reviewing    | 2026-06-27 | 3
+ 990e...003 | Backend Engineer           | Sadia Begum       | pending      | 2026-06-24 | 4
+ 990e...007 | Backend Engineer           | Mohammad Sakhawat      | pending      | 2026-06-30 | 4
+ 990e...008 | Senior React Developer     | Rakib Ghosh   | rejected     | 2026-06-26 | 5</code></pre>
 <h3 id="query-category-5-with-clause-common-table-expressions">Query
 Category 5: WITH Clause (Common Table Expressions)</h3>
 <h4 id="query-5.1-simple-with-clause">Query 5.1: Simple WITH Clause</h4>
@@ -1810,10 +1816,10 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb70-1"><a href="#
 <p><strong>Output Snapshot:</strong></p>
 <pre><code> company_name        | open_jobs | total_jobs | open_percentage
 ---------------------|-----------|------------|--------
- TechCorp Industries | 2         | 3          | 66.7
- InnovateLabs        | 1         | 1          | 100.0
- DesignStudio        | 1         | 1          | 100.0
- CloudStack          | 1         | 1          | 100.0</code></pre>
+ Pathao | 2         | 3          | 66.7
+ bKash        | 1         | 1          | 100.0
+ Brain Station 23        | 1         | 1          | 100.0
+ Enosis Solutions          | 1         | 1          | 100.0</code></pre>
 <h4 id="query-5.2-recursive-cte-or-multiple-ctes">Query 5.2: Recursive
 CTE or Multiple CTEs</h4>
 <p><strong>Description:</strong> Create a comprehensive skill matching
@@ -1861,13 +1867,13 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb72-1"><a href="#
 <p><strong>Output Snapshot:</strong></p>
 <pre><code> seeker_name     | job_title                  | seeker_skills | required_skills | match_percentage
 -----------------|----------------------------|---------------|----------------|---------
- Alice Johnson   | Senior React Developer     | 3             | 2              | 100.0
- Jack Davis      | Senior React Developer     | 3             | 2              | 100.0
- Bob Smith       | Backend Engineer           | 3             | 2              | 66.7
- Henry Wilson    | DevOps Engineer            | 2             | 2              | 100.0
- Grace Lee       | UI/UX Designer             | 2             | 2              | 100.0
- Charlie Brown   | Machine Learning Engineer  | 3             | 3              | 100.0
- Alice Johnson   | Backend Engineer           | 3             | 2              | 50.0</code></pre>
+ Tanvir Rahman   | Senior React Developer     | 3             | 2              | 100.0
+ Mohammad Sakhawat      | Senior React Developer     | 3             | 2              | 100.0
+ Sadia Begum       | Backend Engineer           | 3             | 2              | 66.7
+ Sakhawat Hosen    | DevOps Engineer            | 2             | 2              | 100.0
+ Niloy Mukherjee       | UI/UX Designer             | 2             | 2              | 100.0
+ Rakib Ghosh   | Machine Learning Engineer  | 3             | 3              | 100.0
+ Tanvir Rahman   | Backend Engineer           | 3             | 2              | 50.0</code></pre>
 <h3 id="query-category-6-string-manipulation-set-operations">Query
 Category 6: String Manipulation &amp; Set Operations</h3>
 <h4 id="query-6.1-string-manipulation">Query 6.1: String
@@ -1893,12 +1899,12 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb74-1"><a href="#
 <p><strong>Output Snapshot:</strong></p>
 <pre><code> formal_name      | generated_email           | headline                 | bio_preview                          | resume_url_length | state_from_location
 ------------------|-|-----|-----|---|---|
- ALICE JOHNSON   | alice.johnson@seekers... | Full Stack Developer    | Passionate about web development ... | 20                | CA
- BOB SMITH       | bob.smith@seekers...    | Junior Backend Engineer | Learning Node.js and PostgreSQL      | 18                | NY
- CHARLIE BROWN   | charlie.brown@seekers...| Data Scientist          | ML specialist with 5 years exper ... | 22                | TX
- GRACE LEE       | grace.lee@seekers...   | Ui/Ux Designer          | NULL                                 | 0                 | WA
- HENRY WILSON    | henry.wilson@seekers...| Devops Engineer         | Docker and Kubernetes specialist     | 21                | MA
- JACK DAVIS      | jack.davis@seekers...  | Full Stack Developer    | React and Python developer           | 19                | CO</code></pre>
+ TANVIR RAHMAN   | tanvir.rahman@seekers... | Full Stack Developer    | Passionate about web development ... | 20                | BD
+ SADIA BEGUM       | sadia.begum@seekers...    | Junior Backend Engineer | Learning Node.js and PostgreSQL      | 18                | BD
+ RAKIB GHOSH   | rakib.ghosh@seekers...| Data Scientist          | ML specialist with 5 years exper ... | 22                | BD
+ NILOY MUKHERJEE       | niloy.mukherjee@seekers...   | Ui/Ux Designer          | NULL                                 | 0                 | BD
+ SAKHAWAT HOSEN    | sakhawat.hosen@seekers...| Devops Engineer         | Docker and Kubernetes specialist     | 21                | BD
+ MOHAMMAD SAKHAWAT      | mohammad.sakhawat@seekers...  | Full Stack Developer    | React and Python developer           | 19                | BD</code></pre>
 <h4 id="query-6.2-set-operations---union">Query 6.2: Set Operations -
 UNION</h4>
 <p><strong>Description:</strong> Combine all user types (seekers and
@@ -1926,12 +1932,12 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb76-1"><a href="#
 <p><strong>Output Snapshot:</strong></p>
 <pre><code> user_id                              | email                | role      | activity_status   | last_login
 --------------------------------------|---------------------|-----------|-------------------|--
- 550e8400-e29b-41d4-a716-446655440001 | alice@seeker.com    | seeker    | Active Recently   | 2026-06-29
- 550e8400-e29b-41d4-a716-446655440003 | charlie@seeker.com  | seeker    | Active Recently   | 2026-07-01
- 550e8400-e29b-41d4-a716-446655440004 | diana@employer.com  | employer  | Active Recently   | 2026-07-01
- 550e8400-e29b-41d4-a716-446655440005 | evan@employer.com   | employer  | Active Recently   | 2026-07-01
- 550e8400-e29b-41d4-a716-446655440009 | isla@employer.com   | employer  | Active Recently   | 2026-07-01
- 550e8400-e29b-41d4-a716-446655440010 | jack@seeker.com     | seeker    | Active Recently   | 2026-07-01</code></pre>
+ 550e8400-e29b-41d4-a716-446655440001 | tanvir@seeker.com    | seeker    | Active Recently   | 2026-06-29
+ 550e8400-e29b-41d4-a716-446655440003 | rakib@seeker.com  | seeker    | Active Recently   | 2026-07-01
+ 550e8400-e29b-41d4-a716-446655440004 | nusrat@employer.com  | employer  | Active Recently   | 2026-07-01
+ 550e8400-e29b-41d4-a716-446655440005 | faysal@employer.com   | employer  | Active Recently   | 2026-07-01
+ 550e8400-e29b-41d4-a716-446655440009 | animesh@employer.com   | employer  | Active Recently   | 2026-07-01
+ 550e8400-e29b-41d4-a716-446655440010 | mohammad@seeker.com     | seeker    | Active Recently   | 2026-07-01</code></pre>
 <h4 id="query-6.3-set-operations---except">Query 6.3: Set Operations -
 EXCEPT</h4>
 <p><strong>Description:</strong> Find skills required by jobs but not
@@ -2142,9 +2148,9 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb93-1"><a href="#
 <p><strong>Output Snapshot:</strong></p>
 <pre><code> job_id      | title                    | company_name        | salary_min | salary_max | application_count | active_interviews
 ---|----|-----|---|---|---|--
- 880e8400... | Senior React Developer   | TechCorp Industries | 120000     | 150000     | 3                 | 1
- 880e8400... | Backend Engineer         | TechCorp Industries | 100000     | 130000     | 2                 | 0
- 880e8400... | Machine Learning Engine  | InnovateLabs        | 130000     | 160000     | 1                 | 0</code></pre>
+ 880e8400... | Senior React Developer   | Pathao | 120000     | 150000     | 3                 | 1
+ 880e8400... | Backend Engineer         | Pathao | 100000     | 130000     | 2                 | 0
+ 880e8400... | Machine Learning Engine  | bKash        | 130000     | 160000     | 1                 | 0</code></pre>
 <h3 id="view-2-seeker-profile-completeness">View 2: Seeker Profile
 Completeness</h3>
 <p><strong>Description:</strong> View showing seeker profile completion
@@ -2189,12 +2195,12 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb96-1"><a href="#
 <p><strong>Output Snapshot:</strong></p>
 <pre><code> full_name       | completion_percentage | skill_count | application_count
 -|--|--|--|
- Alice Johnson  | 100                   | 3           | 1
- Bob Smith      | 100                   | 3           | 1
- Charlie Brown  | 100                   | 3           | 2
- Jack Davis     | 100                   | 3           | 2
- Grace Lee      | 80                    | 2           | 1
- Henry Wilson   | 100                   | 2           | 1</code></pre>
+ Tanvir Rahman  | 100                   | 3           | 1
+ Sadia Begum      | 100                   | 3           | 1
+ Rakib Ghosh  | 100                   | 3           | 2
+ Mohammad Sakhawat     | 100                   | 3           | 2
+ Niloy Mukherjee      | 80                    | 2           | 1
+ Sakhawat Hosen   | 100                   | 2           | 1</code></pre>
 <h3 id="view-3-skill-demand-index">View 3: Skill Demand Index</h3>
 <p><strong>Description:</strong> View showing skill demand across job
 market.</p>
@@ -2489,7 +2495,10 @@ salary trends<br />
 ✓ <strong>Company Management</strong> - Supports multi-company employer
 operations<br />
 ✓ <strong>Data Privacy</strong> - Enforces role-based access control via
-RLS</p>
+RLS<br />
+✓ <strong>Bangladeshi Localization</strong> - Fully customized with
+Bangladeshi seeker profiles, tech employers, educational institutions,
+and geographic locations</p>
 <h4 id="technical-excellence"><strong>Technical
 Excellence:</strong></h4>
 <ul>
@@ -2509,5 +2518,6 @@ integrity and query performance.</p>
 <hr />
 <h3 id="end-of-report">End of Report</h3>
 <p><strong>Database Version:</strong> 1.0<br />
-<strong>Last Updated:</strong> 2026-07-01<br />
+<strong>Last Updated:</strong> 2026-07-05 (Localized for
+Bangladesh)<br />
 <strong>Status:</strong> ✓ Ready for Production Deployment</p>
