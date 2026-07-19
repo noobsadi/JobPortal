@@ -116,8 +116,8 @@
 @theme inline {
   --color-background: var(--bg-base);
   --color-foreground: var(--text-primary);
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-display: 'Outfit', system-ui, sans-serif;
+  --font-sans: var(--font-plus-jakarta), system-ui, sans-serif;
+  --font-display: var(--font-manrope), system-ui, sans-serif;
 }
 
 /* ─────────────────────────────────────────────
@@ -140,7 +140,7 @@ html {
 body {
   background: var(--bg-base);
   color: var(--text-primary);
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--font-sans);
   font-size: 15px;
   line-height: 1.6;
   min-height: 100vh;
@@ -317,7 +317,7 @@ body {
   line-height: 46px;
   font-size: 14px;
   color: var(--text-primary);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   transition: var(--transition);
   outline: none;
 }
@@ -383,7 +383,7 @@ textarea.input {
 
 /* Section heading */
 .section-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-display);
   font-size: 28px;
   font-weight: 700;
   color: var(--text-primary);

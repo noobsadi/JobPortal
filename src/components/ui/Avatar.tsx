@@ -39,6 +39,7 @@ export function Avatar({ src, firstName = '', lastName = '', name, size = 'md', 
           src={src}
           alt={name || `${firstName} ${lastName}`}
           fill
+          unoptimized
           className="object-cover"
         />
       ) : (
@@ -75,7 +76,7 @@ export function CompanyLogo({ src, name, size = 48, className }: CompanyLogoProp
         className={cn('relative rounded-full overflow-hidden shrink-0 bg-[var(--bg-elevated)]', className)}
         style={{ width: size, height: size }}
       >
-        <Image src={src} alt={name} fill className="object-contain p-1" />
+        <Image src={src} alt={name} fill unoptimized className="object-contain p-1" />
       </div>
     );
   }

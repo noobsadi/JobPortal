@@ -1,6 +1,19 @@
 import type { Metadata } from 'next';
+import { Manrope, Plus_Jakarta_Sans } from 'next/font/google';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import './globals.css';
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-plus-jakarta',
+  display: 'swap',
+});
+
+const manrope = Manrope({
+  subsets: ['latin'],
+  variable: '--font-manrope',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: {
@@ -23,12 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-      </head>
+    <html lang="en" className={`${plusJakartaSans.variable} ${manrope.variable}`} suppressHydrationWarning>
       <body className="antialiased min-h-screen flex flex-col" suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
